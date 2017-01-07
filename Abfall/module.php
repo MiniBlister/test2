@@ -81,12 +81,9 @@
             $this->SetStatus(203);
           }
           if ($this->ReadPropertyBoolean('activeMuell4') == 1 || $this->ReadPropertyString('nameMuell4') == "" ) {
-            $this->SetStatus(204);
-            
+            $this->SetStatus(204);  
           }
-          else {
-            $this->SetStatus(102);
-          }
+          
         }          
         
         

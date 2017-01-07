@@ -1,0 +1,15 @@
+{
+    "id": "{E3341A4D-88EF-4A06-8235-7DEF9E5567F2}",
+    "name": "KohrsHaus",
+    "type": 0,
+    "vendor": "Kohrs Modules",
+    "aliases":
+    [
+        "KohrsHaus"
+    ],  
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "KohrsHaus"
+    
+}

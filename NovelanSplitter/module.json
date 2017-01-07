@@ -1,0 +1,13 @@
+{
+    "id": "{C5A51178-2760-49DA-9175-1ED71975753C}",
+    "name": "NovSplitter",
+    "type": 2,
+    "vendor": "",
+    "aliases": [
+        "Novelan Splitter"
+    ],  
+    "parentRequirements": ["{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}"],
+    "childRequirements": ["{7553773d-45e4-4334-9d37-dbf9c7ca1778}"],
+    "implemented": ["{018EF6B5-AB94-40C6-AA53-46943E824ACF}","{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}"],
+    "prefix": "NovSp"
+}

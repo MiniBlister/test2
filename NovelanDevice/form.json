@@ -1,0 +1,71 @@
+{
+    "elements":
+    [
+        { "type": "Label", "label": "Intervall für die Aktualisierung aller Daten:" },
+        { "type": "IntervalBox", "name": "Interval", "caption": "Sekunden" },
+        { "type": "Label", "label": "Varriablen die gelogget werden sollen :" },
+        
+        { "type": "CheckBox", "name": "Temperatur_TVL_Vorlauf", "caption": "Temperatur TVL Vorlauf" },
+        { "type": "CheckBox", "name": "Temperatur_TRL_Ruecklauf", "caption": "Temperatur TRL Ruecklauf" },
+        { "type": "CheckBox", "name": "Temperatur_TRL_ext_Ruecklauf_Extern", "caption": "Temperatur TRL ext Ruecklauf Extern" },
+        { "type": "CheckBox", "name": "Temperatur_THG_Heissgas", "caption": "Temperatur THG Heissgas" },
+        { "type": "CheckBox", "name": "Temperatur_TA_Aussenfuehler", "caption": "Temperatur TA Aussenfuehler" },
+        { "type": "CheckBox", "name": "Mitteltemperatur", "caption": "Mitteltemperatur" },
+        { "type": "CheckBox", "name": "Temperatur_TBW", "caption": "Temperatur TBW" },
+        { "type": "CheckBox", "name": "Temperatur_TWE_Waermequelle_Ein", "caption": "Temperatur TWE Waermequelle Ein" },
+        { "type": "CheckBox", "name": "Temperatur_TWA_Waermequelle_Aus", "caption": "Temperatur TWA Waermequelle Aus" },
+        { "type": "CheckBox", "name": "Temperatur_TFB1", "caption": "Temperatur TFB1" },
+        { "type": "CheckBox", "name": "Temperatur_RFV", "caption": "Temperatur RFV" },
+        { "type": "CheckBox", "name": "Temperatur_TFB2", "caption": "Temperatur TFB2" },
+        { "type": "CheckBox", "name": "Temperatur_TSK", "caption": "Temperatur TSK" },
+        { "type": "CheckBox", "name": "Temperatur_TSS", "caption": "Temperatur TSS" },
+        { "type": "CheckBox", "name": "Temperatur_TEE", "caption": "Temperatur TEE" },
+        { "type": "CheckBox", "name": "Zaehler_BetrZeitVD1", "caption": "Zaehler BetrZeitVD1" },
+        { "type": "CheckBox", "name": "Zaehler_BetrZeitImpVD1", "caption": "Zaehler BetrZeitImpVD1" },
+        { "type": "CheckBox", "name": "Zaehler_BetrZeitVD2", "caption": "Zaehler BetrZeitVD2" },
+        { "type": "CheckBox", "name": "Zaehler_BetrZeitImpVD2", "caption": "Zaehler BetrZeitImpVD2" },
+        { "type": "CheckBox", "name": "Zaehler_BetrZeitZWE1", "caption": "Zaehler BetrZeitZWE1" },
+        { "type": "CheckBox", "name": "Zaehler_BetrZeitZWE2", "caption": "Zaehler BetrZeitZWE2" },
+        { "type": "CheckBox", "name": "Zaehler_BetrZeitZWE3", "caption": "Zaehler BetrZeitZWE3" },
+        { "type": "CheckBox", "name": "Zaehler_BetrZeitWP", "caption": "Zaehler BetrZeitWP" },
+        { "type": "CheckBox", "name": "Zaehler_BetrZeitHz", "caption": "Zaehler BetrZeitHz" },
+        { "type": "CheckBox", "name": "Zaehler_BetrZeitBW", "caption": "Zaehler BetrZeitBW" },
+        { "type": "CheckBox", "name": "Zaehler_BetrZeitKue", "caption": "Zaehler BetrZeitKue" },
+        { "type": "CheckBox", "name": "Time_WPein_akt", "caption": "Time WPein akt" },
+        { "type": "CheckBox", "name": "Time_ZWE1_akt", "caption": "Time ZWE1 akt" },
+        { "type": "CheckBox", "name": "Time_ZWE2_akt", "caption": "Time ZWE2 akt" },
+        { "type": "CheckBox", "name": "Time_EinschVerz", "caption": "Time EinschVerz" },
+        { "type": "CheckBox", "name": "Time_SSPAUS_akt", "caption": "Time SSPAUS akt" },
+        { "type": "CheckBox", "name": "Time_SSPEIN_akt", "caption": "Time SSPEIN akt" },
+        { "type": "CheckBox", "name": "Time_VDStd_akt", "caption": "Time VDStd akt" },
+        { "type": "CheckBox", "name": "Time_HRM_akt", "caption": "Time HRM akt" },
+        { "type": "CheckBox", "name": "Time_HRW_akt", "caption": "Time HRW akt" },
+        { "type": "CheckBox", "name": "Time_LGS_akt", "caption": "Time LGS akt" },
+        { "type": "CheckBox", "name": "Time_SBW_akt", "caption": "Time SBW akt" },
+        { "type": "CheckBox", "name": "Code_WP_akt", "caption": "Code WP akt" },
+        { "type": "CheckBox", "name": "BIV_Stufe_akt", "caption": "BIV Stufe akt" },
+        { "type": "CheckBox", "name": "WP_BZ_akt", "caption": "WP BZ akt" },
+        { "type": "CheckBox", "name": "AnzahlFehlerInSpeicher", "caption": "AnzahlFehlerInSpeicher" },
+        { "type": "CheckBox", "name": "AktuelleTimeStamp", "caption": "AktuelleTimeStamp" },
+        { "type": "CheckBox", "name": "Temperatur_TFB3", "caption": "Temperatur TFB3" },
+        { "type": "CheckBox", "name": "Temperatur_RFV2", "caption": "Temperatur RFV2" },
+        { "type": "CheckBox", "name": "Temperatur_RFV3", "caption": "Temperatur RFV3" },
+        { "type": "CheckBox", "name": "Zaehler_BetrZeitSW", "caption": "Zaehler BetrZeitSW" },
+        { "type": "CheckBox", "name": "WMZ_Heizung", "caption": "WMZ Heizung" },
+        { "type": "CheckBox", "name": "WMZ_Brauchwasser", "caption": "WMZ Brauchwasser" },
+        { "type": "CheckBox", "name": "WMZ_Schwimmbad", "caption": "WMZ Schwimmbad" },
+        { "type": "CheckBox", "name": "WMZ_Seit", "caption": "WMZ Seit" },
+        { "type": "CheckBox", "name": "WMZ_Durchfluss", "caption": "WMZ Durchfluss" },
+        { "type": "CheckBox", "name": "Time_Heissgas", "caption": "Time Heissgas" }
+
+
+    ],
+    "actions":
+    [
+        {"type": "Button", "label": "Test Connection", "onClick": "NovDev_Test($id);" }
+    ],
+    "status":
+    [
+        
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "id": "{09486D1A-1A6B-426F-A755-944797D9F42D}",
+    "name": "KoVerkehr",
+    "type": 3,
+    "vendor": "Kohrs Modules",
+    "aliases":
+    [
+        "Verkehr"
+    ],  
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "Verk"
+}

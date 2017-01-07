@@ -1,0 +1,14 @@
+{
+    "id": "{7553773d-45e4-4334-9d37-dbf9c7ca1778}",
+    "name": "NovDevice",
+    "type": 3,
+    "vendor": "",
+    "aliases":
+    [
+        "Novelan Device"
+    ],  
+    "parentRequirements": [],
+    "childRequirements": ["{C5A51178-2760-49DA-9175-1ED71975753C}"],
+    "implemented": ["{C5A51178-2760-49DA-9175-1ED71975753C}"],
+    "prefix": "NovDev"
+}

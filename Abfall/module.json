@@ -1,0 +1,16 @@
+{
+    "id": "{749B44DF-2583-41E9-BA3F-EB554620C20E}",
+    "name": "KoAbfall",
+    "type": 3,
+    "vendor": "Kohrs Modules",
+    "aliases":
+    [
+        "Abfall"
+    ],  
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "KoAbfall"
+    
+    
+}

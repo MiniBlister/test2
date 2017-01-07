@@ -71,16 +71,16 @@
         
         
         private function ValidateConfiguration() {
-          if ($this->ReadPropertyBoolean('activeMuell1') == 1 || $this->ReadPropertyString('nameMuell1') == "" ) {
+          if ($this->ReadPropertyBoolean('activeMuell1') == 1 AND $this->ReadPropertyString('nameMuell1') == "" ) {
             $this->SetStatus(201);
           }
-          if ($this->ReadPropertyBoolean('activeMuell2') == 1 || $this->ReadPropertyString('nameMuell2') == "" ) {
+          if ($this->ReadPropertyBoolean('activeMuell2') == 1 AND $this->ReadPropertyString('nameMuell2') == "" ) {
             $this->SetStatus(202);
           }
-          if ($this->ReadPropertyBoolean('activeMuell3') == 1 || $this->ReadPropertyString('nameMuell3') == "" ) {
+          if ($this->ReadPropertyBoolean('activeMuell3') == 1 AND $this->ReadPropertyString('nameMuell3') == "" ) {
             $this->SetStatus(203);
           }
-          if ($this->ReadPropertyBoolean('activeMuell4') == 1 || $this->ReadPropertyString('nameMuell4') == "" ) {
+          if ($this->ReadPropertyBoolean('activeMuell4') == 1 AND $this->ReadPropertyString('nameMuell4') == "" ) {
             $this->SetStatus(204);  
           }
           

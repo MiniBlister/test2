@@ -52,6 +52,7 @@
             if ($this->ReadPropertyBoolean('activeMuell4') == 1) {
               $muell[] = $this->RegisterVariableString("muell4", $this->ReadPropertyString ("nameMuell4"));
             }
+            print_r($muell);
         }
         
         public function Destroy()

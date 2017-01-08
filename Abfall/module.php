@@ -38,17 +38,18 @@
             if ($this->ValidateConfiguration() == false){
               return;
             }
+            print "hallo";
             if ($this->ReadPropertyBoolean('activeMuell1') == 1) { 
-              $muell[] = $this->RegisterVariableString("muell1", ReadPropertyString ("nameMuell1"));
+              $muell[] = $this->RegisterVariableString("muell1", $this->ReadPropertyString ("nameMuell1"));
             }
             if ($this->ReadPropertyBoolean('activeMuell2') == 1) {
-              $muell[] = $this->RegisterVariableString("muell2", ReadPropertyString ("nameMuell2"));
+              $muell[] = $this->RegisterVariableString("muell2", $this->ReadPropertyString ("nameMuell2"));
             }
             if ($this->ReadPropertyBoolean('activeMuell3') == 1) {
-              $muell[] = $this->RegisterVariableString("muell3", ReadPropertyString ("nameMuell3"));
+              $muell[] = $this->RegisterVariableString("muell3", $this->ReadPropertyString ("nameMuell3"));
             }
             if ($this->ReadPropertyBoolean('activeMuell4') == 1) {
-              $muell[] = $this->RegisterVariableString("muell4", ReadPropertyString ("nameMuell4"));
+              $muell[] = $this->RegisterVariableString("muell4", $this->ReadPropertyString ("nameMuell4"));
             }
         }
         

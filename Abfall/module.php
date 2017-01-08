@@ -38,10 +38,11 @@
             if ($this->ValidateConfiguration() == false){
               return;
             }
-            print "hallo";
-            if ($this->ReadPropertyBoolean('activeMuell1') == 1) { 
+        
+            if ($this->ReadPropertyBoolean('activeMuell1') == 1 AND GetIDForIdent("muell1") == FALSE) { 
               $muell[] = $this->RegisterVariableString("muell1", $this->ReadPropertyString ("nameMuell1"));
             }
+            else {print "hallo2";}
             if ($this->ReadPropertyBoolean('activeMuell2') == 1) {
               $muell[] = $this->RegisterVariableString("muell2", $this->ReadPropertyString ("nameMuell2"));
             }

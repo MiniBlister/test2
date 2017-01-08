@@ -66,10 +66,7 @@
     "status":
     [
         { "code": 102, "icon": "active", "caption": "Configuration valid!" },
-        { "code": 201, "icon": "error", "caption": "Muell1 Name not correct!" },
-        { "code": 202, "icon": "error", "caption": "Muell2 Name not correct!" },
-        { "code": 203, "icon": "error", "caption": "Muell3 Name not correct!" },
-        { "code": 204, "icon": "error", "caption": "Muell4 Name not correct!" }
+        { "code": 201, "icon": "error", "caption": "Muell activated but Muell Name not correct!" }
       
     ]
 }

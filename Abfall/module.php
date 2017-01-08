@@ -35,9 +35,21 @@
             // Diese Zeile nicht löschen
             parent::ApplyChanges();
            
-
-            $this->ValidateConfiguration();
-                      
+            if ($this->ValidateConfiguration() == false){
+              return;
+            }
+            if ($this->ReadPropertyBoolean('activeMuell1') == 1) { 
+              $muell[] = $this->RegisterVariableString("muell1", ReadPropertyString ("nameMuell1"));
+            }
+            if ($this->ReadPropertyBoolean('activeMuell2') == 1) {
+              $muell[] = $this->RegisterVariableString("muell2", ReadPropertyString ("nameMuell2"));
+            }
+            if ($this->ReadPropertyBoolean('activeMuell3') == 1) {
+              $muell[] = $this->RegisterVariableString("muell3", ReadPropertyString ("nameMuell3"));
+            }
+            if ($this->ReadPropertyBoolean('activeMuell4') == 1) {
+              $muell[] = $this->RegisterVariableString("muell4", ReadPropertyString ("nameMuell4"));
+            }
         }
         
         public function Destroy()
@@ -77,11 +89,11 @@
                OR ($this->ReadPropertyBoolean('activeMuell4') == 1 AND $this->ReadPropertyString('nameMuell4') == "" )
               ) {
             $this->SetStatus(201);
-            return;
+            return false;
           }
           
           $this->SetStatus(102);
-          
+          return true;
         }          
         
         

@@ -40,7 +40,7 @@
               return;
             }
             
-            if ($this->ReadPropertyBoolean('activeMuell1') == 1 AND $this->GetIDForIdent("muell1") == FALSE) { 
+            if (($this->ReadPropertyBoolean('activeMuell1') == 1) AND ($this->GetIDForIdent("muell1") === FALSE)) { 
               $muell[] = $this->RegisterVariableString("muell1", $this->ReadPropertyString ("nameMuell1"));
             }
             else {print "hallo2";}

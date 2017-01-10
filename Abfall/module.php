@@ -40,8 +40,9 @@
               return;
             }
             
-            $this->RegisterVariableString("muell1", $this->ReadPropertyString ("nameMuell1"));
-            
+            //$this->RegisterVariableString("muell1", $this->ReadPropertyString ("nameMuell1"));
+            $this->MaintainVariable("muell1", $this->ReadPropertyString ("nameMuell1"), 3, "", 0, $this->ReadPropertyBoolean("muell1") == 1);
+
             
             if ($this->ReadPropertyBoolean('activeMuell2') == 1) {
               $muell[] = $this->RegisterVariableString("muell2", $this->ReadPropertyString ("nameMuell2"));

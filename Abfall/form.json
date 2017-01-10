@@ -56,7 +56,8 @@
             { "label": "Papier Tonne", "value": 6 }
             ]
         },
-        { "type": "CheckBox", "name": "activeMuell4", "caption": "Müll4 aktivieren" }        
+        { "type": "CheckBox", "name": "activeMuell4", "caption": "Müll4 aktivieren" },
+        { "type": "CheckBox", "name": "htmloutput", "caption": "HTML Output erzeugen." },
       
     ],
     "actions":

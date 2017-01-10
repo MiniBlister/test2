@@ -23,10 +23,11 @@
             $this->RegisterPropertyInteger("artMuell2", 0);
             $this->RegisterPropertyInteger("artMuell3", 0);
             $this->RegisterPropertyInteger("artMuell4", 0);
-            $this->RegisterPropertyBoolean("activeMuell1", false);
-            $this->RegisterPropertyBoolean("activeMuell2", false);
-            $this->RegisterPropertyBoolean("activeMuell3", false);
-            $this->RegisterPropertyBoolean("activeMuell4", false);
+            $this->RegisterPropertyBoolean("activeMuell1",  false);
+            $this->RegisterPropertyBoolean("activeMuell2",  false);
+            $this->RegisterPropertyBoolean("activeMuell3",  false);
+            $this->RegisterPropertyBoolean("activeMuell4",  false);
+            $this->RegisterPropertyBoolean("htmloutput",    false);
                     
         }
 
@@ -38,7 +39,7 @@
             if ($this->ValidateConfiguration() == false){
               return;
             }
-        
+            
             if ($this->ReadPropertyBoolean('activeMuell1') == 1 AND $this->GetIDForIdent("muell1") == FALSE) { 
               $muell[] = $this->RegisterVariableString("muell1", $this->ReadPropertyString ("nameMuell1"));
             }

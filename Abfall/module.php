@@ -42,7 +42,7 @@
             
             //$this->RegisterVariableString("muell1", $this->ReadPropertyString ("nameMuell1"));
             $test = IPS_VariableExists ($this->GetIDForIdent("muell1") );
-            
+            print $test;
             $this->MaintainVariable("muell1", $this->ReadPropertyString ("nameMuell1"), 3, "", 0, $this->ReadPropertyBoolean("activeMuell1") == true);
 
             

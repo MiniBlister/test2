@@ -42,7 +42,7 @@
             
             //$this->RegisterVariableString("muell1", $this->ReadPropertyString ("nameMuell1"));
             if ($this->ReadPropertyBoolean('activeMuell1') == 1 AND @$this->GetIDForIdent("muell1") !== false) {
-              IPS_SetName($this->GetIDForIdent("muell1"), "Sicherheitsvorkehrungen");
+              IPS_SetName($this->GetIDForIdent("muell1"), $this->ReadPropertyString ("nameMuell1"));
             }
             else {
               $this->RegisterVariableString("muell1", $this->ReadPropertyString ("nameMuell1"));

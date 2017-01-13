@@ -1,6 +1,21 @@
 {
     "elements":
     [
+        { "type": "ValidationTextBox", "name": "nameMuell0", "caption": "Name Müll0" },
+        { "type": "Select", "name": "artMuell0", "caption": "Müll Art",
+            "options": [
+            { "label": "Gelber Sack", "value": 0 },
+            { "label": "Gelbe Tonne", "value": 1 },
+            { "label": "Schwarze Tonne", "value": 2 },
+            { "label": "Braune Tonne", "value": 3 },
+            { "label": "Blaue Tonne", "value": 4 },
+            { "label": "Grüne Tonne", "value": 5 },
+            { "label": "Papier Tonne", "value": 6 }
+
+            ]
+        },
+        { "type": "CheckBox", "name": "activeMuell0", "caption": "Müll0 aktivieren" },
+        
         { "type": "ValidationTextBox", "name": "nameMuell1", "caption": "Name Müll1" },
         { "type": "Select", "name": "artMuell1", "caption": "Müll Art",
             "options": [
@@ -11,7 +26,6 @@
             { "label": "Blaue Tonne", "value": 4 },
             { "label": "Grüne Tonne", "value": 5 },
             { "label": "Papier Tonne", "value": 6 }
-
             ]
         },
         { "type": "CheckBox", "name": "activeMuell1", "caption": "Müll1 aktivieren" },
@@ -43,21 +57,7 @@
             ]
         },
         { "type": "CheckBox", "name": "activeMuell3", "caption": "Müll3 aktivieren" },
-        
-        { "type": "ValidationTextBox", "name": "nameMuell4", "caption": "Name Müll4" },
-        { "type": "Select", "name": "artMuell4", "caption": "Müll Art",
-            "options": [
-            { "label": "Gelber Sack", "value": 0 },
-            { "label": "Gelbe Tonne", "value": 1 },
-            { "label": "Schwarze Tonne", "value": 2 },
-            { "label": "Braune Tonne", "value": 3 },
-            { "label": "Blaue Tonne", "value": 4 },
-            { "label": "Grüne Tonne", "value": 5 },
-            { "label": "Papier Tonne", "value": 6 }
-            ]
-        },
-        { "type": "CheckBox", "name": "activeMuell4", "caption": "Müll4 aktivieren" },
-        { "type": "CheckBox", "name": "htmloutput", "caption": "HTML Output erzeugen." },
+        { "type": "CheckBox", "name": "htmloutput", "caption": "HTML Output erzeugen." }
       
     ],
     "actions":

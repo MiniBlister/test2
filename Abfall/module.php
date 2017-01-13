@@ -40,7 +40,7 @@
             for ($i = 0; $i < KOAB_COUNT; $i++) {
               if ($this->ReadPropertyBoolean('activeMuell'.$i) == 1 AND @$this->GetIDForIdent('muell'.$i) !== false) {
                 IPS_SetName($this->GetIDForIdent('muell'.$i), $this->ReadPropertyString ('nameMuell'.$i));
-                $id
+                
               }     
               elseif ($this->ReadPropertyBoolean('activeMuell'.$i) == 1 AND @$this->GetIDForIdent('muell'.$i) === false) {
                 $this->RegisterVariableString('muell'.$i, $this->ReadPropertyString ('nameMuell'.$i));

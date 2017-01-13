@@ -41,24 +41,25 @@
             for ($i = 0; $i < KOAB_COUNT; $i++) {
               if ($this->ReadPropertyBoolean('activeMuell'.$i) == 1 AND @$this->GetIDForIdent('muell'.$i) !== false) {
                 IPS_SetName($this->GetIDForIdent('muell'.$i), $this->ReadPropertyString ('nameMuell'.$i));
-                $id[$i] = $this->GetIDForIdent('muell'.$i);
+                //$id[$i] = $this->GetIDForIdent('muell'.$i);
               }     
               elseif ($this->ReadPropertyBoolean('activeMuell'.$i) == 1 AND @$this->GetIDForIdent('muell'.$i) === false) {
                 $this->RegisterVariableString('muell'.$i, $this->ReadPropertyString ('nameMuell'.$i));
-                $id[$i] = $this->GetIDForIdent('muell'.$i);
+                //$id[$i] = $this->GetIDForIdent('muell'.$i);
               }
               elseif ($this->ReadPropertyBoolean('activeMuell'.$i) == 0 AND @$this->GetIDForIdent('muell'.$i) !== false) {
                 IPS_DeleteVariable ($this->GetIDForIdent('muell'.$i));
-                $id[$i] = 0;
+                //$id[$i] = 0;
               }
               else {
-                $id[$i] = 0;
+                //$id[$i] = 0;
               }
             }
-            
-            
-            
-            
+            $eid = IPS_CreateEvent (1);
+            IPS_SetEventCyclicTimeFrom($eid, 0, 0, 0);
+            IPS_SetParent($eid, $this->InstanceID);
+            IPS_SetEventScheduleAction($eid, 1, "Update", 0x00FF00, "KoAbfall_Update(\$_IPS['TARGET']);");
+   
    
         }
         
@@ -80,7 +81,7 @@
         * ABC_MeineErsteEigeneFunktion($id);
         *
         */
-        public function MeineErsteEigeneFunktion() {
+        public function Update() {
             // Selbsterstellter Code
           
         }

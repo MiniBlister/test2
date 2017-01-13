@@ -32,12 +32,15 @@
             parent::ApplyChanges();
             
             $id = array();
-          
+            
+            // Standardmasssig wird das Event geloescht
+            if (IPS_EventExists (@IPS_GetEventIDByName("Update", $this->InstanceID))) {
+              IPS_DeleteEvent (@IPS_GetEventIDByName("Update", $this->InstanceID) );
+            }
+            
             if ($this->ValidateConfiguration() == false){
                 // Loesche das Event wenn die Validierung der Meull Eingaben nicht korrekt ist
-              if (IPS_EventExists (@IPS_GetEventIDByName("Update", $this->InstanceID))) {
-                IPS_DeleteEvent (@IPS_GetEventIDByName("Update", $this->InstanceID) );
-              }
+
               return;
             }
             

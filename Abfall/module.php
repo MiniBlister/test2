@@ -63,7 +63,7 @@
             $eid = IPS_CreateEvent (1);
             IPS_SetEventCyclicTimeFrom($eid, 0, 0, 0);
             IPS_SetParent($eid, $this->InstanceID);
-            IPS_SetEventScheduleAction($eid, 1, "Update", 0x00FF00, "KoAbfall_Update(\$_IPS['TARGET']);");
+            IPS_SetEventScript($eid, 'KoAbfall_Update($_IPS[\'TARGET\']);');
 
         }
         

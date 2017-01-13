@@ -16,20 +16,12 @@
         // Überschreibt die interne IPS_Create($id) Funktion
         public function Create() {
             // Diese Zeile nicht löschen.
-            parent::Create();       
-            $this->RegisterPropertyString("nameMuell0", "");
-            $this->RegisterPropertyString("nameMuell1", "");
-            $this->RegisterPropertyString("nameMuell2", "");
-            $this->RegisterPropertyString("nameMuell3", "");
-            $this->RegisterPropertyInteger("artMuell0", 0);
-            $this->RegisterPropertyInteger("artMuell0", 0);
-            $this->RegisterPropertyInteger("artMuell0", 0);
-            $this->RegisterPropertyInteger("artMuell0", 0);
-            $this->RegisterPropertyBoolean("activeMuell0",  false);
-            $this->RegisterPropertyBoolean("activeMuell1",  false);
-            $this->RegisterPropertyBoolean("activeMuell2",  false);
-            $this->RegisterPropertyBoolean("activeMuell3",  false);
-            
+            parent::Create();
+            for ($i = 0; $i < KOAB_COUNT; $i++) {
+              $this->RegisterPropertyString("nameMuell".$i, "");
+              $this->RegisterPropertyInteger("artMuell".$i, 0);
+              $this->RegisterPropertyBoolean("activeMuell".$i,  false);     
+            }            
             $this->RegisterPropertyBoolean("htmloutput",    false);
                     
         }
@@ -45,7 +37,7 @@
             }
             
             // Varriable Muell 1 erstellen wenn noch nicht vorhanden; umbennen wenn die Varraible schon vorhanden
-            for ($i = 1; $i <= KOAB_COUNT; $i++) {
+            for ($i = 0; $i < KOAB_COUNT; $i++) {
               if ($this->ReadPropertyBoolean('activeMuell'.$i) == 1 AND @$this->GetIDForIdent('muell'.$i) !== false) {
                 IPS_SetName($this->GetIDForIdent('muell'.$i), $this->ReadPropertyString ('nameMuell'.$i));
                 $id
@@ -98,7 +90,7 @@
         
         private function ValidateConfiguration() {
           
-          for ($i = 0; $i <= KOAB_COUNT; $i++) {
+          for ($i = 0; $i < KOAB_COUNT; $i++) {
             if ($this->ReadPropertyBoolean('activeMuell'.$i) == 1 AND $this->ReadPropertyString('nameMuell'.$i) == "") {
               $this->SetStatus(201);
               return false;

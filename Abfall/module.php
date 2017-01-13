@@ -40,23 +40,17 @@
               return;
             }
             
-            //$this->RegisterVariableString("muell1", $this->ReadPropertyString ("nameMuell1"));
-            if ($this->ReadPropertyBoolean('activeMuell1') == 1 AND @$this->GetIDForIdent("muell1") !== false) {
-              IPS_SetName($this->GetIDForIdent("muell1"), $this->ReadPropertyString ("nameMuell1"));
-            }
-            else {
-              $this->RegisterVariableString("muell1", $this->ReadPropertyString ("nameMuell1"));
+            // Varriable Muell 1 erstellen wenn noch nicht vorhanden; umbennen wenn die Varraible schon vorhanden
+            for ($i == 1; $i <= 4; $i++) {
+              if ($this->ReadPropertyBoolean('activeMuell'.$i) == 1 AND @$this->GetIDForIdent('muell'.$i) !== false) {
+                IPS_SetName($this->GetIDForIdent('muell'.$i), $this->ReadPropertyString ('nameMuell'.$i));
+              }
+              else {
+                $this->RegisterVariableString('muell'.$i, $this->ReadPropertyString ('nameMuell'.$i));
+              }
             }
             
-            if ($this->ReadPropertyBoolean('activeMuell2') == 1) {
-              $muell[] = $this->RegisterVariableString("muell2", $this->ReadPropertyString ("nameMuell2"));
-            }
-            if ($this->ReadPropertyBoolean('activeMuell3') == 1) {
-              $muell[] = $this->RegisterVariableString("muell3", $this->ReadPropertyString ("nameMuell3"));
-            }
-            if ($this->ReadPropertyBoolean('activeMuell4') == 1) {
-              $muell[] = $this->RegisterVariableString("muell4", $this->ReadPropertyString ("nameMuell4"));
-            }
+            
             
         }
         

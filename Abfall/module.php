@@ -41,10 +41,9 @@
             }
             
             //$this->RegisterVariableString("muell1", $this->ReadPropertyString ("nameMuell1"));
-            $test = IPS_VariableExists ($this->GetIDForIdent("muell1") );
-            print $test;
-            $this->MaintainVariable("muell1", $this->ReadPropertyString ("nameMuell1"), 3, "", 0, $this->ReadPropertyBoolean("activeMuell1") == true);
-
+            if ($this->ReadPropertyBoolean('activeMuell2') == 1 AND @$this->GetIDForIdent("muell1") !== false) {
+              IPS_SetName($this->GetIDForIdent("muell1"), "Sicherheitsvorkehrungen");
+            }
             
             if ($this->ReadPropertyBoolean('activeMuell2') == 1) {
               $muell[] = $this->RegisterVariableString("muell2", $this->ReadPropertyString ("nameMuell2"));

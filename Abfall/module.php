@@ -41,7 +41,7 @@
             }
             
             // Varriable Muell 1 erstellen wenn noch nicht vorhanden; umbennen wenn die Varraible schon vorhanden
-            for ($i == 1; $i <= 4; $i++) {
+            for ($i = 1; $i <= 4; $i++) {
               if ($this->ReadPropertyBoolean('activeMuell'.$i) == 1 AND @$this->GetIDForIdent('muell'.$i) !== false) {
                 IPS_SetName($this->GetIDForIdent('muell'.$i), $this->ReadPropertyString ('nameMuell'.$i));
               }

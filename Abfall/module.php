@@ -27,6 +27,7 @@
             $this->RegisterPropertyBoolean("activeMuell2",  false);
             $this->RegisterPropertyBoolean("activeMuell3",  false);
             $this->RegisterPropertyBoolean("activeMuell4",  false);
+            
             $this->RegisterPropertyBoolean("htmloutput",    false);
                     
         }
@@ -44,9 +45,12 @@
             for ($i = 1; $i <= 4; $i++) {
               if ($this->ReadPropertyBoolean('activeMuell'.$i) == 1 AND @$this->GetIDForIdent('muell'.$i) !== false) {
                 IPS_SetName($this->GetIDForIdent('muell'.$i), $this->ReadPropertyString ('nameMuell'.$i));
+              }     
+              elseif ($this->ReadPropertyBoolean('activeMuell'.$i) == 1 AND @$this->GetIDForIdent('muell'.$i) === false) {
+                $this->RegisterVariableString('muell'.$i, $this->ReadPropertyString ('nameMuell'.$i));
               }
               else {
-                $this->RegisterVariableString('muell'.$i, $this->ReadPropertyString ('nameMuell'.$i));
+                
               }
             }
             

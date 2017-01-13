@@ -49,6 +49,9 @@
               elseif ($this->ReadPropertyBoolean('activeMuell'.$i) == 1 AND @$this->GetIDForIdent('muell'.$i) === false) {
                 $this->RegisterVariableString('muell'.$i, $this->ReadPropertyString ('nameMuell'.$i));
               }
+              elseif ($this->ReadPropertyBoolean('activeMuell'.$i) == 0 AND @$this->GetIDForIdent('muell'.$i) !== false) {
+                IPS_DeleteVariable ($this->GetIDForIdent('muell'.$i));
+              }
               else {
                 
               }

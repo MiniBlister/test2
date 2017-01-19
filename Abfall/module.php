@@ -52,6 +52,7 @@
               }     
               elseif ($this->ReadPropertyBoolean('activeMuell'.$i) == 1 AND @$this->GetIDForIdent('muell'.$i) === false) {
                 $this->RegisterVariableString('muell'.$i, $this->ReadPropertyString ('nameMuell'.$i));
+                $this->EnableAction('muell'.$i);
                 $id[$i] = $this->GetIDForIdent('muell'.$i);
               }
               elseif ($this->ReadPropertyBoolean('activeMuell'.$i) == 0 AND @$this->GetIDForIdent('muell'.$i) !== false) {

@@ -31,6 +31,7 @@ class KoAbfall extends IPSModule {
         // Diese Zeile nicht löschen
         parent::ApplyChanges();
 
+        $id = array();
 
         // Standardmasssig wird das Event geloescht
         if (IPS_EventExists(@IPS_GetEventIDByName("Update", $this->InstanceID))) {
@@ -46,10 +47,8 @@ class KoAbfall extends IPSModule {
         for ($i = 0; $i < KOAB_COUNT; $i++) {
             if ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 AND @ $this->GetIDForIdent('muell' . $i) !== false) {
                 IPS_SetName($this->GetIDForIdent('muell' . $i), $this->ReadPropertyString('nameMuell' . $i));
-
-            } elseif ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 AND @ $this->GetIDForIdent('muell' . $i) === false) {       
-                $this->CreateVariableByIdent($this->InstanceID, 'muell'.$i, 'muell'.$i, 3, "");
-                $this->EnableAction('muell'.$i);
+            } elseif ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 AND @ $this->GetIDForIdent('muell' . $i) === false) {
+                $this->RegisterVariableString('muell' . $i, $this->ReadPropertyString('nameMuell' . $i), $i);
             } elseif ($this->ReadPropertyBoolean('activeMuell' . $i) == 0 AND @ $this->GetIDForIdent('muell' . $i) !== false) {
                 IPS_DeleteVariable($this->GetIDForIdent('muell' . $i));
             } else {
@@ -98,18 +97,24 @@ class KoAbfall extends IPSModule {
         $this->SetStatus(102);
         return true;
     }
-    //type:     0 = Boolean, 1 = Integert, 2 0 Float, 3 = String
-    private function CreateVariableByIdent($id, $ident, $name, $type, $profile = "") {
-        $vid = @IPS_GetObjectIDByIdent($ident, $id);
-        if ($vid === false) {
-            $vid = IPS_CreateVariable($type);
-            IPS_SetParent($vid, $id);
-            IPS_SetName($vid, $name);
-            IPS_SetIdent($vid, $ident);
-            if ($profile != "")
-                IPS_SetVariableCustomProfile($vid, $profile);
+
+    public function RequestAction($Ident, $Value) {
+
+        switch ($Ident) {
+            case ( preg_match( '/muell.*/', $Ident ) ? true : false ):
+                SetValue($this->GetIDForIdent($Ident), $Value);
+                break;
+            case 'COLOR_TEMPERATURE':
+                $value = $value;
+                break;
+            case 'SATURATION':
+            case 'BRIGHTNESS':
+                $value = $value;
+                break;
+            default:
+                throw new Exception("Invalid ident");
         }
-        return $vid;
+
     }
 
 }

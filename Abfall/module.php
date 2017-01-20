@@ -141,10 +141,10 @@ class KoAbfall extends IPSModule {
         $i = -1;
         foreach($dates_array as $key => $val) {
             if ($i == -1) {
-                $kodate[0] = ((strtotime($val)-$today) / 86400);
-		$kodate[1] = round($kodate[0],0);
-	        $kodate[2] = strtotime($val);
-		if ($kodate[0] >= 0) {
+                $kodate['left'] = ((strtotime($val)-$today) / 86400);
+		//$kodate[1] = round($kodate[0],0);
+	        $kodate['date'] = strtotime($val);
+		if ($kodate['left'] >= 0) {
                     $i = $key;
 		}
             }

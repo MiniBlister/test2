@@ -56,7 +56,7 @@ class KoAbfall extends IPSModule {
             }
         }
         if ($this->ReadPropertyBoolean('htmloutput') == true) {
-            $this->RegisterVariableString('htmloutput' , "HTMLBox", "~htmlbox", 99);
+            $this->RegisterVariableString('htmloutput' , "HTMLBox", "~HTMLBox", 99);
         }
         
         $eid = IPS_CreateEvent(1);

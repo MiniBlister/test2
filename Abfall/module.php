@@ -82,7 +82,7 @@ class KoAbfall extends IPSModule {
         for ($i = 0; $i < KOAB_COUNT; $i++) {
             // Checken ob die Function activ ist und ob es die varriable gibt
             if ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 && @$this->GetIDForIdent('muell' . $i) !== false) {
-                $datearray = GetDateArray($this->GetIDForIdent('muell' . $i));  
+                $datearray = $this->GetDateArray($this->GetIDForIdent('muell' . $i));  
                 print_r ($datearray);
             }
         }
@@ -113,7 +113,7 @@ class KoAbfall extends IPSModule {
         
         $s = GetValueString($id);
         if ($s != "") {
-            return GetNextDate($s);
+            return $this->GetNextDate($s);
         }
         else {
             throw new Exception("No valid dates in varriable");

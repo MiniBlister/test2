@@ -39,7 +39,6 @@ class KoAbfall extends IPSModule {
         }
         if ($this->ValidateConfiguration() == false) {
             // Loesche das Event wenn die Validierung der Meull Eingaben nicht korrekt ist
-
             return;
         }
 
@@ -56,6 +55,10 @@ class KoAbfall extends IPSModule {
                 
             }
         }
+        if ($this->ReadPropertyBoolean('htmloutput') == true) {
+            $this->RegisterVariableString('htmloutput' , "HTMLBox", "~htmlbox", 99);
+        }
+        
         $eid = IPS_CreateEvent(1);
         //IPS_SetEventCyclicTimeFrom($eid, 0, 0, 0);
         IPS_SetEventCyclicTimeFrom($eid, date('G'), date('i'), date('s')+1);
@@ -84,9 +87,12 @@ class KoAbfall extends IPSModule {
         for ($i = 0; $i < KOAB_COUNT; $i++) {
             // Checken ob die Function activ ist und ob es die varriable gibt
             if ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 && @$this->GetIDForIdent('muell' . $i) !== false) {
-                $datearray = $this->GetDateArray($this->GetIDForIdent('muell' . $i));  
-                print_r ($datearray);
+                $datearray = $this->GetDateArray($this->GetIDForIdent('muell' . $i));
+                $datearray[]['type'] = $this->RegisterPropertyInteger('muell' . $i);
             }
+        }
+        if (@$this->GetIDForIdent('htmloutput') !== false) {
+          print_r ($datearray);  
         }
     }
 
@@ -143,7 +149,6 @@ class KoAbfall extends IPSModule {
 		}
             }
 	}
-        
         return $kodate;       
     }
     

@@ -81,8 +81,9 @@ class KoAbfall extends IPSModule {
         // Selbsterstellter Code
         for ($i = 0; $i < KOAB_COUNT; $i++) {
             // Checken ob die Function activ ist und ob es die varriable gibt
-            if ($this->ReadPropertyBoolean('activeMuell' . $i) == 1) {
-                
+            if ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 && @$this->GetIDForIdent('muell' . $i) !== false) {
+                $datearray = GetDateArray($this->GetIDForIdent('muell' . $i));  
+                print_r ($datearray);
             }
         }
     }
@@ -103,6 +104,49 @@ class KoAbfall extends IPSModule {
         $this->SetStatus(102);
         return true;
     }
+     /**
+     *  
+     *  GetDateString($id);
+     *  Liest den String ein und gibt diesen zurück
+     */
+    private function GetDateArray($id) {
+        
+        $s = GetValueString($id);
+        if ($s != "") {
+            return GetNextDate($s);
+        }
+        else {
+            throw new Exception("No valid dates in varriable");
+        }
+    }
+    
+     /**
+     *  
+     *  GetDateString($id);
+     *  Liest den String ein und gibt diesen zurück
+     */
+    private function GetNextDate($datestr) {
+        //Date of Today
+        $today = strtotime(date('d.m.Y'));
+        //Den String aufteilen in ein Array
+        $dates_array = explode (';',$datestr);
+        $i = -1;
+        foreach($dates_array as $key => $val) {
+            if ($i == -1) {
+                $kodate[0] = ((strtotime($val)-$today) / 86400);
+		$kodate[1] = round($kodate[0],0);
+	        $kodate[2] = strtotime($val);
+		if ($kodate[0] >= 0) {
+                    $i = $key;
+		}
+            }
+	}
+        
+        return $kodate;       
+    }
+    
+    
+
 
     public function RequestAction($Ident, $Value) {
 

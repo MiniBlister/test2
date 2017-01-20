@@ -45,18 +45,17 @@ class KoAbfall extends IPSModule {
 
         // Varriable Muell 1 erstellen wenn noch nicht vorhanden; umbennen wenn die Varraible schon vorhanden
         for ($i = 0; $i < KOAB_COUNT; $i++) {
-            if ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 AND @ $this->GetIDForIdent('muell' . $i) !== false) {
+            if ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 AND @$this->GetIDForIdent('muell' . $i) !== false) {
                 IPS_SetName($this->GetIDForIdent('muell' . $i), $this->ReadPropertyString('nameMuell' . $i));
-            } elseif ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 AND @ $this->GetIDForIdent('muell' . $i) === false) {
+            } elseif ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 AND @$this->GetIDForIdent('muell' . $i) === false) {
                 $this->RegisterVariableString('muell' . $i, $this->ReadPropertyString('nameMuell' . $i), "", $i);
                 $this->EnableAction('muell' . $i);
-            } elseif ($this->ReadPropertyBoolean('activeMuell' . $i) == 0 AND @ $this->GetIDForIdent('muell' . $i) !== false) {
+            } elseif ($this->ReadPropertyBoolean('activeMuell' . $i) == 0 AND @$this->GetIDForIdent('muell' . $i) !== false) {
                 IPS_DeleteVariable($this->GetIDForIdent('muell' . $i));
             } else {
                 
             }
         }
-
         $eid = IPS_CreateEvent(1);
         IPS_SetEventCyclicTimeFrom($eid, 0, 0, 0);
         IPS_SetParent($eid, $this->InstanceID);
@@ -80,6 +79,12 @@ class KoAbfall extends IPSModule {
      */
     public function Update() {
         // Selbsterstellter Code
+        for ($i = 0; $i < KOAB_COUNT; $i++) {
+            // Checken ob die Function activ ist und ob es die varriable gibt
+            if ($this->ReadPropertyBoolean('activeMuell' . $i) == 1) {
+                
+            }
+        }
     }
 
     protected function GetParent() {
@@ -102,20 +107,16 @@ class KoAbfall extends IPSModule {
     public function RequestAction($Ident, $Value) {
 
         switch ($Ident) {
-            case ( preg_match( '/muell.*/', $Ident ) ? true : false ):
+            case ( preg_match('/muell.*/', $Ident) ? true : false ):
                 SetValue($this->GetIDForIdent($Ident), $Value);
-                break;
-            case 'COLOR_TEMPERATURE':
-                $value = $value;
                 break;
             case 'SATURATION':
             case 'BRIGHTNESS':
-                $value = $value;
+                $Value = $Value;
                 break;
             default:
                 throw new Exception("Invalid ident");
         }
-
     }
 
 }

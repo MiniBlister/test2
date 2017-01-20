@@ -84,11 +84,13 @@ class KoAbfall extends IPSModule {
      */
     public function Update() {
         // Selbsterstellter Code
+        $k = 0;
         for ($i = 0; $i < KOAB_COUNT; $i++) {
             // Checken ob die Function activ ist und ob es die varriable gibt
             if ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 && @$this->GetIDForIdent('muell' . $i) !== false) {
-                $datearray[] = $this->GetDateArray($this->GetIDForIdent('muell' . $i));
-                $datearray[]['type'] = $this->ReadPropertyInteger('artMuell' . $i);
+                $datearray[$k] = $this->GetDateArray($this->GetIDForIdent('muell' . $i));
+                $datearray[$k]['type'] = $this->ReadPropertyInteger('artMuell' . $i);
+                $k++;
             }
         }
         if (@$this->GetIDForIdent('htmloutput') !== false) {

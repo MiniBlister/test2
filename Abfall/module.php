@@ -88,7 +88,7 @@ class KoAbfall extends IPSModule {
             // Checken ob die Function activ ist und ob es die varriable gibt
             if ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 && @$this->GetIDForIdent('muell' . $i) !== false) {
                 $datearray = $this->GetDateArray($this->GetIDForIdent('muell' . $i));
-                $datearray[]['type'] = $this->ReadPropertyInteger('muell' . $i);
+                $datearray['type'] = $this->ReadPropertyInteger('muell' . $i);
             }
         }
         if (@$this->GetIDForIdent('htmloutput') !== false) {

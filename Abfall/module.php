@@ -101,7 +101,7 @@ class KoAbfall extends IPSModule {
         }
         */
         
-        $test = $this->GetActiveMuell($this->GetAllMuell(TRUE, TRUE));
+        $test = $this->GetActiveMuell($this->GetAllMuell(FALSE, FALSE));
         
     }
 

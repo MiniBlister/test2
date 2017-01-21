@@ -85,6 +85,8 @@ class KoAbfall extends IPSModule {
     public function Update() {
         // Selbsterstellter Code
         $k = 0;
+        
+        /*
         for ($i = 0; $i < KOAB_COUNT; $i++) {
             // Checken ob die Function activ ist und ob es die varriable gibt
             if ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 && @$this->GetIDForIdent('muell' . $i) !== false) {
@@ -97,20 +99,29 @@ class KoAbfall extends IPSModule {
           $temp =  file_get_contents(__DIR__ . "/_template.html");
           print_r ($datearray);  
         }
+        */
+        
+        $test = $this->GetActiveMuell($this->GetAllMuell(FALSE, FALSE));
+        
     }
 
     protected function GetParent() {
         $instance = IPS_GetInstance($this->InstanceID);
         return ($instance['ConnectionID'] > 0) ? $instance['ConnectionID'] : false;
     }
-
+     /**
+     *  
+     *  ValidateConfiguration();
+     *  Validiert die Konfiguration
+     *  Es muss immer einen Namen für die Varriable eigegeben werden wenn der Müll aktiv ist  
+     */
     private function ValidateConfiguration() {
-
-        for ($i = 0; $i < KOAB_COUNT; $i++) {
-            if ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 AND $this->ReadPropertyString('nameMuell' . $i) == "") {
+        $data = $this->GetAllMuell(FALSE, FALSE);
+        foreach ($data as $value) {
+            if ($value['active'] == 1 AND $value['name'] == "") {
                 $this->SetStatus(201);
                 return false;
-            }
+            }  
         }
         $this->SetStatus(102);
         return true;
@@ -130,6 +141,47 @@ class KoAbfall extends IPSModule {
             throw new Exception("No valid dates in varriable");
         }
     }
+     /**
+     *  
+     *  GetAllMuell(bool $var,bool $cont);
+     *  Liest den String ein und gibt diesen zurück
+     */
+    private function GetAllMuell(bool $var, bool $cont) {
+        $KoArMuell = array();
+        
+        for ($i = 0; $i < KOAB_COUNT; $i++) {
+            $KoArMuell[$i]['activ'] =   $this->ReadPropertyBoolean('activeMuell' . $i);
+            $KoArMuell[$i]['name']  =   $this->ReadPropertyString('nameMuell' . $i);
+            if ($var == TRUE) {
+                $KoArMuell[$i]['varid']  =   @$this->GetIDForIdent('muell' . $i);
+            }
+            if ($cont == TRUE && $var == TRUE) {
+                $KoArMuell[$i]['cont'] = GetValueString($KoArMuell[$i]['varid']);
+            }
+        }      
+        return $KoArMuell;
+    }
+    
+     /**
+     *  
+     *  GetActiveMuell(array $var);
+     *  Liest den String ein und gibt diesen zurück
+     */
+    private function GetActiveMuell(array $var) {
+        $KoArMuell = $var;
+        
+        foreach ($var as $key => $value) {
+            if ($value['active'] == FALSE) {
+              unset ($KoArMuell[$key]);  
+            } 
+        }
+        print_r ($KoArMuell);
+        return $KoArMuell;
+    }
+    
+    
+    
+    
     
      /**
      *  

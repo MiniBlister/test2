@@ -175,7 +175,7 @@ class KoAbfall extends IPSModule {
               unset ($KoArMuell[$key]);  
             } 
         }
-        $test =  print_r ($KoArMuell);
+        $test =  implode ($KoArMuell);
         $this->SendDebug("Test", $test ,0);
         return $KoArMuell;
     }

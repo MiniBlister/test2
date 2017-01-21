@@ -195,7 +195,7 @@ class KoAbfall extends IPSModule {
 		}
             }
 	}
-        return $kodate;       
+        return $kodate[0];       
     }
     
     

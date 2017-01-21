@@ -83,26 +83,15 @@ class KoAbfall extends IPSModule {
      *
      */
     public function Update() {
-        // Selbsterstellter Code
-        $k = 0;
-        
-        /*
-        for ($i = 0; $i < KOAB_COUNT; $i++) {
-            // Checken ob die Function activ ist und ob es die varriable gibt
-            if ($this->ReadPropertyBoolean('activeMuell' . $i) == 1 && @$this->GetIDForIdent('muell' . $i) !== false) {
-                $datearray[$k] = $this->GetDateArray($this->GetIDForIdent('muell' . $i));
-                $datearray[$k]['type'] = $this->ReadPropertyInteger('artMuell' . $i);
-                $k++;
-            }
-        }
         if (@$this->GetIDForIdent('htmloutput') !== false) {
           $temp =  file_get_contents(__DIR__ . "/_template.html");
           print_r ($datearray);  
         }
-        */
-        
-        $test = $this->GetActiveMuell($this->GetAllMuell(TRUE, TRUE));
-        
+ 
+        $activeMuell = $this->GetActiveMuell($this->GetAllMuell(TRUE, TRUE));
+        foreach ($activeMuell as $key => $value) {
+            $activeMuell[$key] =  GetDateArray($value['varid']);
+        }
     }
 
     protected function GetParent() {
@@ -150,13 +139,13 @@ class KoAbfall extends IPSModule {
         $KoArMuell = array();
         
         for ($i = 0; $i < KOAB_COUNT; $i++) {
-            $KoArMuell[$i]['active'] =   $this->ReadPropertyBoolean('activeMuell' . $i);
-            $KoArMuell[$i]['name']  =   $this->ReadPropertyString('nameMuell' . $i);
+            $KoArMuell[$i]['active']        =   $this->ReadPropertyBoolean('activeMuell' . $i);
+            $KoArMuell[$i]['name']          =   $this->ReadPropertyString('nameMuell' . $i);
             if ($var == TRUE) {
-                $KoArMuell[$i]['varid']  =   @$this->GetIDForIdent('muell' . $i);
+                $KoArMuell[$i]['varid']     =   @$this->GetIDForIdent('muell' . $i);
             }
             if ($cont == TRUE && $var == TRUE && $KoArMuell[$i]['varid'] != FALSE) {
-                $KoArMuell[$i]['cont'] = GetValueString($KoArMuell[$i]['varid']);
+                $KoArMuell[$i]['cont']      = GetValueString($KoArMuell[$i]['varid']);
             }
         }      
         return $KoArMuell;
@@ -165,18 +154,17 @@ class KoAbfall extends IPSModule {
      /**
      *  
      *  GetActiveMuell(array $var);
-     *  Liest den String ein und gibt diesen zurück
+     *  Löscht aus dem Array die Einträge die nicht aktiv sind und die keine varriable ID haben
      */
     private function GetActiveMuell(array $var) {
         $KoArMuell = $var;
         
         foreach ($var as $key => $value) {
-            if ($value['active'] == FALSE) {
+            if ($value['active'] == FALSE OR $value['varid'] == FALSE) {
               unset ($KoArMuell[$key]);  
             } 
         }
-        $test =  json_encode ($KoArMuell);
-        $this->SendDebug("Test", $test ,0);
+
         return $KoArMuell;
     }
     

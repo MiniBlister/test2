@@ -94,6 +94,7 @@ class KoAbfall extends IPSModule {
         }
         $test = json_encode($activeMuell);
         $this->SendDebug ( 'test', $test, 1 );
+        print_r ($activeMuell);
     }
 
     protected function GetParent() {
@@ -195,7 +196,7 @@ class KoAbfall extends IPSModule {
 		}
             }
 	}
-        return $kodate[0];       
+        return $kodate;       
     }
     
     

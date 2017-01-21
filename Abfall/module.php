@@ -150,7 +150,7 @@ class KoAbfall extends IPSModule {
         $KoArMuell = array();
         
         for ($i = 0; $i < KOAB_COUNT; $i++) {
-            $KoArMuell[$i]['activ'] =   $this->ReadPropertyBoolean('activeMuell' . $i);
+            $KoArMuell[$i]['active'] =   $this->ReadPropertyBoolean('activeMuell' . $i);
             $KoArMuell[$i]['name']  =   $this->ReadPropertyString('nameMuell' . $i);
             if ($var == TRUE) {
                 $KoArMuell[$i]['varid']  =   @$this->GetIDForIdent('muell' . $i);

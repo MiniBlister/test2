@@ -101,7 +101,7 @@ class KoAbfall extends IPSModule {
         }
         */
         
-        $test = $this->GetActiveMuell($this->GetAllMuell(FALSE, FALSE));
+        $test = $this->GetActiveMuell($this->GetAllMuell(TRUE, TRUE));
         
     }
 
@@ -155,7 +155,7 @@ class KoAbfall extends IPSModule {
             if ($var == TRUE) {
                 $KoArMuell[$i]['varid']  =   @$this->GetIDForIdent('muell' . $i);
             }
-            if ($cont == TRUE && $var == TRUE) {
+            if ($cont == TRUE && $var == TRUE && $KoArMuell[$i]['varid'] != FALSE) {
                 $KoArMuell[$i]['cont'] = GetValueString($KoArMuell[$i]['varid']);
             }
         }      

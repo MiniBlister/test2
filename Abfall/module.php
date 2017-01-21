@@ -175,7 +175,7 @@ class KoAbfall extends IPSModule {
               unset ($KoArMuell[$key]);  
             } 
         }
-        $test =  implode ($KoArMuell);
+        $test =  json_encode ($KoArMuell);
         $this->SendDebug("Test", $test ,0);
         return $KoArMuell;
     }

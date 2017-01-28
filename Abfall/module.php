@@ -92,9 +92,9 @@ class KoAbfall extends IPSModule {
         foreach ($activeMuell as $key => $value) {
             $test = $this->GetDateArray($value['varid']);
             //$activeMuell[$key][] = $test  ;
-            $activeMuell = array_merge($activeMuell, $test);
+            $r1[] = array_merge($activeMuell[$key], $test);
         }
-        $test = json_encode($activeMuell);
+        $test = json_encode($r1);
         $this->SendDebug ( 'test', $test, 1 );
         print_r ($activeMuell);
     }

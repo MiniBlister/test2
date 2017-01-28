@@ -139,7 +139,7 @@ class KoAbfall extends IPSModule {
      *  GetAllMuell(bool $var,bool $cont);
      *  Liest den String ein und gibt diesen zurück
      */
-    private function GetAllMuell(bool $var, bool $cont) {
+    private function GetAllMuell($var, $cont) {
         $KoArMuell = array();
         
         for ($i = 0; $i < KOAB_COUNT; $i++) {

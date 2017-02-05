@@ -83,18 +83,23 @@ class KoAbfall extends IPSModule {
      *
      */
     public function Update() {
-      /* if (@$this->GetIDForIdent('htmloutput') !== false) {
-          $temp =  file_get_contents(__DIR__ . "/_template.html");
-          print_r ($datearray);  
+        if (@$this->GetIDForIdent('htmloutput') !== false) {
+            $file_main =  file_get_contents(__DIR__ . "/muell_main.tpl.php");     
+        
+ 
+            $activeMuell = $this->GetActiveMuell($this->GetAllMuell(TRUE, TRUE));
+            foreach ($activeMuell as $key => $value) {
+                $activeMuellmerged[$key] = array_merge($activeMuell[$key], $this->GetDateArray($value['varid']));
+            }
+            $file_tmp =  file_get_contents(__DIR__ . "/muell_row.tpl.php");
+            foreach ($activeMuellmerged as $key => $value){
+                $file_row[$key] = str_replace($file_tmp, $activeMuellmerged, $value)
+                
+            } 
         }
- */
-        $activeMuell = $this->GetActiveMuell($this->GetAllMuell(TRUE, TRUE));
-        foreach ($activeMuell as $key => $value) {
-            $activeMuellmerged[$key] = array_merge($activeMuell[$key], $this->GetDateArray($value['varid']));
-        }
-        $test = json_encode($activeMuellmerged);
-        $this->SendDebug ( 'test', $test, 1 );
-        print_r ($activeMuell);
+        
+        
+        
     }
 
     protected function GetParent() {

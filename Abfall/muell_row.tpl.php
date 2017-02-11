@@ -3,4 +3,5 @@
         <img src="{*img*}"><br>{*datum*}
     </div>
     <div style="color:{*color*}; left: 24px; position: absolute; top: 3px">{*days*}</div>
+    
 </div>

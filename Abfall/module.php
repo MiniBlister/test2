@@ -93,10 +93,12 @@ class KoAbfall extends IPSModule {
             }
             $file_tmp =  file_get_contents(__DIR__ . "/muell_row.tpl.php");
             foreach ($activeMuellmerged as $key => $value){
-                $file_row[$key] = str_replace($file_tmp, $activeMuellmerged, $value)
-                
-            } 
+                $file_row[$key] = str_replace($file_tmp, "{*width*}", "100");  
+            }
+            SetValueString(@$this->GetIDForIdent('htmloutput'), implode($file_row));
         }
+        
+        
         
         
         

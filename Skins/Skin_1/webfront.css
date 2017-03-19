@@ -1,0 +1,840 @@
+/* ---------------------------------------------------------
+  SVG Manipulation - geht nur, wenn die SVGs "inline" sind,
+  nicht bei URLs
+.icon { fill: #800000 !important; }
+*/
+/*
+.link>.ipsIconPaintbrush {
+  background-image: url('icons_colored/Paintbrush.svg');
+}
+.link>.ipsIconGraph {
+  background-image: url('icons_colored/Graph.svg');
+}
+*/
+
+/* -------------------------
+   Globale Einstellungen
+   ------------------------- */
+
+body,
+.ipsTabPane>.navigation  {
+  font-family: /*font*/Segoe Script/*/font*/;
+  color: rgba(0,0,0,0.54)/*fcl*/;
+}
+
+.ipsWebFront,
+.ipsDialog.modal,
+.ipsContentChanger > .navigation
+{
+  background-image: none;
+  background: #FAFAFA/*bc*/;
+}
+
+/* --------------------------
+   Navigation
+   -------------------------- */
+
+/* Oberste Navigationszeile TOP */
+.ipsWebFront>.ipsContainer>.top>div>.navigation
+{
+  background: #616161/*bca*/;
+}
+
+/* Statuszeile, wird an der height mit 34 px erkannt */
+.bottom[style*="height: 34px;"] .navigation
+{
+  box-shadow: 0 0 2px rgba(255,255,255,0.24);
+  background: #616161/*bca*/;
+}
+
+/* Navigationszeilen  */
+.ipsTabPane>.navigation,
+.ipsContentChanger >.navigation
+{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12)/*sca1*/, 0 3px 6px rgba(0,0,0,0.24)/*sca2*/;
+  background-image: none;
+  border-color: transparent;
+  background: #757575/*bcn*/;
+}
+
+/* Navigation Textfarbe */
+.ipsTabPane>.navigation,
+.ipsContentChanger>.navigation
+{
+  color: #FFFFFF/*fcn*/;
+}
+
+
+/* Buttons in Nav */
+.ipsTabPane>.navigation>.scroll>.buttons>div,
+/* wenn aktives Element = 1.Child, dann auch */
+.ipsTabPane>.navigation>.scroll>.buttons.subHidden>div:first-child
+{
+  font-size: 1.1em;
+  line-height: 1.8em;
+  opacity : 0.74;
+  border-style: solid;
+  border-width: 0 0 4px 0;
+  border-color: transparent;
+  padding: 0 8px;
+}
+
+/* Aktives Element in Bars */
+.ipsTabPane>.navigation>.scroll>.buttons>div.active,
+/* wenn aktives Element = 1.Child, dann auch */
+.ipsTabPane>.navigation>.scroll>.buttons.subHidden>div.active:first-child
+{
+  border-color: #9E9E9E/*ac*/;
+  font-weight: bold;
+  color: #FFFFFF/*fcn*/;
+  opacity:1.0;
+}
+
+
+
+
+/* --------------------------
+   Info Widgets
+   -------------------------- */
+/* Uhr etwas größer */
+.ipsClockWidget>.title
+{
+  font-size: 1.5em;
+}
+
+/* --------------------------
+   Container
+   -------------------------- */
+.ipsCategory>.container  {
+  border-color: transparent;
+  background-image: none;
+  background: transparent;
+}
+
+/*
+  hb = hide border
+  sb = show border
+*/
+/*sb*//*/sb*/ .ipsCategory>.container  {
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12)/*scc1*/, 0 1px 3px rgba(0,0,0,0.24)/*scc2*/;
+  background: #FFFFFF/*bcc*/;
+}
+
+/*hb*/._disabled/*/hb*/ .left {
+  box-shadow: 1px 0 1px rgba(0,0,0,0.12)/*scc1*/;
+}
+
+/*hb*/._disabled/*/hb*/ .top  {
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12)/*scc1*/;
+}
+
+.ipsSplitPane.border >.top,
+.ipsSplitPane.border >.left {
+  border-color: transparent;
+}
+
+.ipsCategory>.container .childContainers>div {
+  border-color: transparent;
+  margin: 0px 0px 2px 0px;
+}
+
+
+/* --------------------------
+   Werte
+   -------------------------- */
+
+ /* Label */
+.ipsCategory>.container .content .title {
+  color: rgba(0,0,0,0.54)/*fcl*/;
+}
+
+/* Werte und Texte  */
+.ipsCategory>.container .extended>.textBox>div,
+.ipsCategory>.container .extended>.textBox>textarea,
+.ipsCategory>.container .content .visual>.text>input[type=text],
+.ipsCategory>.container .content .visual>.text,
+.ipsCategory>.container .content .visual>.enum>div,
+.ipsCategory>.container .content .visual>.selector>div,
+.ipsCategory>.container .extended>.textBox>div
+{
+  color: #000000/*fcv*/;
+  background-color: transparent;
+  border-color: transparent;
+  font-weight: normal;
+  font-size: 1.0em;
+}
+
+/* Werte */
+.ipsCategory>.container .content .visual>.text{
+  font-weight: normal;
+}
+
+/* Rahmen */
+.ipsCategory>.container .content .visual>.enum,
+.ipsCategory>.container .content .visual>.selector {
+  padding: 0px;
+  margin-right: 0px;
+}
+
+.ipsCategory>.container .content .visual>.enum:before,
+.ipsCategory>.container .content .visual>.selector:before {
+  background: none;
+  border-radius: 16px;
+  content: '';
+  top: 0.25em;
+  right: 1px;
+  left: 2px;
+  height: 1.3em;
+  position: absolute;
+  box-shadow: inset 0 1px 1px #9E9E9E/*ac*/, 0 1px 1px #9E9E9E/*ac*/;
+  opacity:0.74;
+}
+
+/* Rahmen - hover */
+.ipsCategory>.container .content .visual>.enum:hover:before,
+.ipsCategory>.container .content .visual>.selector:hover:before {
+  opacity: 1.00;
+}
+
+/* alle Elemente */
+.ipsCategory>.container .content .visual>.enum>div,
+.ipsCategory>.container .content .visual>.selector>div,
+.ipsCategory>.container .extended>.textBox>div {
+  font-weight: normal;
+  font-size: 1.0em;
+  margin: 1px 0px 2px 2px;
+  padding: 0px 0.5em 0px 0.5em;
+  border-radius: 16px;
+  color: #000000/*fcv*/;
+  background: none;
+  box-shadow: none;
+  border-width: 0px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  opacity: 0.74;
+}
+/* ... link Platz freihalten */
+.ipsContainer>.content>[class*='link.show=true'].icon ~ .visual>.enum,
+.ipsContainer>.content>[class*='link.show=true'].icon ~ .visual>.selectorv,
+.ipsContainer>.content>[class*='link.show=true'].icon ~ .visual>.text {
+  right: 36px;
+}
+/* feste Width */
+.ipsContainer>.content>[class*='ele.width=32px'].icon ~ .visual>.enum>div,
+.ipsContainer>.content>[class*='ele.width=32px'].icon ~ .visual>.selector>div{
+  min-width: 32px;
+  width: 32px;
+  overflow: hidden;
+}
+
+.ipsContainer>.content>[class*='ele.width=48px'].icon ~ .visual>.enum>div,
+.ipsContainer>.content>[class*='ele.width=48px'].icon ~ .visual>.selector>div{
+  min-width: 48px;
+  width: 48px;
+}
+
+.ipsContainer>.content>[class*='ele.width=64px'].icon ~ .visual>.enum>div,
+.ipsContainer>.content>[class*='ele.width=64px'].icon ~ .visual>.selector>div{
+  min-width: 64px;
+  width: 64px;
+}
+
+.ipsContainer>.content>[class*='ele.width=80px'].icon ~ .visual>.enum>div,
+.ipsContainer>.content>[class*='ele.width=80px'].icon ~ .visual>.selector>div{
+  min-width: 80px;
+  width: 80px;
+}
+
+.ipsContainer>.content>[class*='ele.width=96px'].icon ~ .visual>.enum>div,
+.ipsContainer>.content>[class*='ele.width=96px'].icon ~ .visual>.selector>div{
+  min-width: 96px;
+  width: 96px;
+}
+
+/* enum - Werte, selected before */
+.ipsCategory>.container .content .visual>.enum>.selected:before,
+.ipsCategory>.container .content .visual>.selector>.selected:before {
+  background: #9E9E9E/*ac*/;
+  border-radius: 16px;
+  content: '';
+  height: 30px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  box-shadow: none;
+  z-index: -1;
+}
+
+/* selected */
+.ipsCategory>.container .content .visual>.enum>.selected,
+.ipsCategory>.container .content .visual>.selector>.selected {
+  background: none;
+  color: #FFFFFF/*fcn*/;
+  background-color: transparent;
+  opacity: 1.0;
+
+}
+
+/* enum - hover */
+.ipsCategory>.container .content .visual>.selector>div:hover,
+.ipsCategory>.container .content .visual>.enum>div:hover{
+  color: #FFFFFF/*fcn*/;
+  background: #9E9E9E/*ac*/;
+  opacity: 0.74;
+  border-radius: 16px;
+  opacity: 1.0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12)/*sca1*/, 0 3px 6px rgba(0,0,0,0.24)/*sca2*/;
+}
+
+/* Selector */
+.ipsCategory>.container .content .visual>.selector>div{
+}
+
+/* "<" und ">" ohne border-bottom */
+.ipsCategory>.container .content .visual>.selector>div:nth-child(2),
+.ipsCategory>.container .content .visual>.selector>div:last-child{
+}
+
+/* Selector - Werte, selektiert */
+.ipsCategory>.container .content .visual>.selector>.selected {
+}
+
+/* Sonderfall: enum hat nur genau einen Wert, dann als Button darstellen
+               enum soll als Btn dargestellt werden  */
+.ipsContainer>.content>[class*='ele.style=btn'].icon ~ .visual>.enum::before,
+.ipsContainer>.content>[class*='ele.style=btn'].icon ~ .visual>.selector::before{
+  opacity: 0.0;
+}
+
+.ipsCategory > .container .content .visual > .enum > div:nth-child(2):last-child.selected,
+.ipsContainer>.content>[class*='ele.style=btn'].icon ~ .visual>.enum>div,
+.ipsContainer>.content>[class*='ele.style=btn'].icon ~ .visual>.selector>div{
+  background: #9E9E9E/*ac*/;
+  border-radius: 2px;
+  color: #FFFFFF/*fcn*/;
+  height:30px;
+  opacity: 1.0;
+}
+
+.ipsCategory > .container .content .visual > .enum > div:nth-child(2):last-child.selected:hover,
+.ipsContainer>.content>[class*='ele.style=btn'].icon ~ .visual>.enum>div:hover,
+.ipsContainer>.content>[class*='ele.style=btn'].icon ~ .visual>.selector>div:hover{
+  border-radius: 2px;
+}
+
+.ipsCategory > .container .content .visual > .enum > div:nth-child(2):last-child.selected::before,
+.ipsContainer>.content>[class*='ele.style=btn'].icon ~ .visual>.enum>div:hover,
+.ipsContainer>.content>[class*='ele.style=btn'].icon ~ .visual>.selector>div:hover{
+  border-radius: 2px;
+
+}
+
+
+
+/* --------------------------
+   Eingabefelder
+   -------------------------- */
+.ipsDialog.ipsEditorDialog>div>.content>ol>li>input[type=text],
+.ipsDialog.ipsEditorDialog>div>.content>ol>li>select,
+.ipsDialog.ipsEditorDialog>div>.content>select {
+  background: #FFFFFF/*bcc*/;
+  border: 1px solid #9E9E9E/*ac*/;
+  color: #000000/*fc*/;
+}
+
+/* --------------------------
+   Slider
+   -------------------------- */
+
+/* Slider Background */
+.ipsCategory>.container .content .visual>.slider>div>.background  {
+  background-image: none;
+  top:10px;
+  height:6px;
+  background: rgba(0,0,0,0.24)/*scc2*/;
+  opacity: 0.74;
+}
+.ipsCategory>.container .content>[class*='slider.type=red'].icon ~ .visual>.slider>div>.background  {
+  background: linear-gradient(to right, #f0f0f0 0%,#ff0000 100%);
+}
+.ipsCategory>.container .content>[class*='slider.type=green'].icon ~ .visual>.slider>div>.background  {
+  background: linear-gradient(to right, #f0f0f0 0%,#00ff00 100%);
+}
+.ipsCategory>.container .content>[class*='slider.type=blue'].icon ~ .visual>.slider>div>.background  {
+  background: linear-gradient(to right, #f0f0f0 0%,#0000ff 100%);
+}
+.ipsCategory>.container .content>[class*='slider.type=hue'].icon ~ .visual>.slider>div>.background  {
+  background: linear-gradient(to right, #ff0000 0%,#ffff00 16%,#00ff00 33%,#00ffff 50%,#0000ff 66%,#ff00ff 84%,#ff0000 100%);
+}
+.ipsCategory>.container .content>[class*='slider.type=saturation'].icon ~ .visual>.slider>div>.background  {
+  background: linear-gradient(to right, #ffffff 0%,#000000 100%);
+}
+.ipsCategory>.container .content>[class*='slider.type=brightness'].icon ~ .visual>.slider>div>.background  {
+  background: linear-gradient(to right, #000000 0%,#ffffff 100%);
+}
+.ipsCategory>.container .content>[class*='slider.type=colortemp'].icon ~ .visual>.slider>div>.background  {
+  background: linear-gradient(to right, #ffd000 0%,#d0d0d0 50%, #00d0ff 100%);
+}
+.ipsCategory>.container .content>[class*='slider.type=scale10'].icon ~ .visual>.slider>div>.background  {
+  background: linear-gradient(to right,
+  rgba(0,0,0,0.24)/*scc2*/  0%, rgba(0,0,0,0.24)/*scc2*/ 10%, transparent 10%, transparent 11%,
+  rgba(0,0,0,0.24)/*scc2*/ 11%, rgba(0,0,0,0.24)/*scc2*/ 20%, transparent 20%, transparent 21%,
+  rgba(0,0,0,0.24)/*scc2*/ 21%, rgba(0,0,0,0.24)/*scc2*/ 30%, transparent 30%, transparent 31%,
+  rgba(0,0,0,0.24)/*scc2*/ 31%, rgba(0,0,0,0.24)/*scc2*/ 40%, transparent 40%, transparent 41%,
+  rgba(0,0,0,0.24)/*scc2*/ 41%, rgba(0,0,0,0.24)/*scc2*/ 50%, transparent 50%, transparent 51%,
+  rgba(0,0,0,0.24)/*scc2*/ 51%, rgba(0,0,0,0.24)/*scc2*/ 60%, transparent 60%, transparent 61%,
+  rgba(0,0,0,0.24)/*scc2*/ 61%, rgba(0,0,0,0.24)/*scc2*/ 70%, transparent 70%, transparent 71%,
+  rgba(0,0,0,0.24)/*scc2*/ 71%, rgba(0,0,0,0.24)/*scc2*/ 80%, transparent 80%, transparent 81%,
+  rgba(0,0,0,0.24)/*scc2*/ 81%, rgba(0,0,0,0.24)/*scc2*/ 90%, transparent 90%, transparent 91%,
+  rgba(0,0,0,0.24)/*scc2*/ 91%, rgba(0,0,0,0.24)/*scc2*/ 100% );
+}
+
+/* Slider Bar */
+.ipsCategory>.container .content .visual>.slider>div>.bar {
+  background-image: none;
+  top:0px;
+  height:26px;
+  background: linear-gradient(transparent 40%, #9E9E9E/*ac*/ 40%, #9E9E9E/*ac*/ 60%, transparent 60%);
+  border: none;
+  opacity: 1.0;
+}
+.ipsContainer>.content>[class*='slider.type=hue'].icon ~ .visual>.slider>div>.bar,
+.ipsContainer>.content>[class*='slider.type=saturation'].icon ~ .visual>.slider>div>.bar,
+.ipsContainer>.content>[class*='slider.type=brightness'].icon ~ .visual>.slider>div>.bar,
+.ipsContainer>.content>[class*='slider.type=red'].icon ~ .visual>.slider>div>.bar,
+.ipsContainer>.content>[class*='slider.type=green'].icon ~ .visual>.slider>div>.bar,
+.ipsContainer>.content>[class*='slider.type=blue'].icon ~ .visual>.slider>div>.bar,
+.ipsContainer>.content>[class*='slider.type=yellow'].icon ~ .visual>.slider>div>.bar,
+.ipsContainer>.content>[class*='slider.type=colortemp'].icon ~ .visual>.slider>div>.bar,
+.ipsContainer>.content>[class*='slider.type=white'].icon ~ .visual>.slider>div>.bar{
+  background: none;
+}
+
+
+/* Slider Anfasser */
+.ipsCategory>.container .content .visual>.slider>div>.bar:after{
+  background: #9E9E9E/*ac*/;
+  border-radius: 50%;
+  content: '';
+  width:24px;
+  height: 24px;
+  right: 0px;
+  position: absolute;
+  box-shadow: 0 0 3px rgba(0,0,0,0.12)/*scc1*/, 0 1px 2px rgba(0,0,0,0.24)/*scc2*/;
+}
+
+.ipsCategory>.container .content .visual>.slider>div>.bar:hover:after {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12)/*sca1*/, 0 3px 6px rgba(0,0,0,0.24)/*sca2*/;
+}
+
+.ipsContainer>.content>[class*='slider.type=red'].icon ~ .visual>.slider>div>.bar:after{
+  background: red;
+}
+.ipsContainer>.content>[class*='slider.type=green'].icon ~ .visual>.slider>div>.bar:after{
+  background: green;
+}
+.ipsContainer>.content>[class*='slider.type=blue'].icon ~ .visual>.slider>div>.bar:after{
+  background: blue;
+}
+.ipsContainer>.content>[class*='slider.type=yellow'].icon ~ .visual>.slider>div>.bar:after{
+  background: yellow;
+}
+.ipsContainer>.content>[class*='slider.type=white'].icon ~ .visual>.slider>div>.bar:after{
+  background: #F0F0F0;
+}
+
+/* Slider Text */
+.ipsCategory>.container .content .visual>.slider>div>.text {
+  color: #000000/*fcv*/;
+  top: 0.25em;
+}
+.ipsCategory>.container .content>[class*='slider.text=hide'].icon ~  .visual>.slider>div>.text {
+  color: transparent;
+}
+
+
+.ipsCategory>.container .content .link>.keyboardLink,
+.ipsCategory>.container .content .link>.chartLink,
+.ipsCategory>.container .content .link>.timerLink,
+.ipsCategory>.container .content .link>.runLink,
+.ipsCategory>.container .content .link>.colorLink {
+}
+
+/* --------------------------
+   Links und Buttons
+   -------------------------- */
+.link {
+  background:#9E9E9E/*ac*/;
+  border-radius:2px;
+  height: 34px;
+  margin: 0px 0px 0px 2px;
+  display: block!important;
+}
+
+.color>div {
+  border-radius:2px;
+}
+
+.link:hover,
+.color>div:hover{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12)/*sca1*/, 0 3px 6px rgba(0,0,0,0.24)/*sca2*/;
+}
+
+.ipsCategory > .container .content [class*='='].icon {
+  min-width: 0px;
+}
+
+
+
+
+/* --------------------------
+   Überschriften
+   ipsContainer container nestedUneven ipsVariable
+   -------------------------- */
+
+.ipsContainer>.content>[class*='title.width=32px'].icon + .title{
+  min-width:32px;
+  width:32px;
+}
+
+.ipsContainer>.content>[class*='title.width=64px'].icon + .title{
+  min-width:64px;
+  width:64px;
+}
+
+.ipsContainer>.content>[class*='title.width=128px'].icon + .title{
+  min-width:128px;
+  width:128px;
+}
+
+/* Container Überschriften */
+.ipsCategory>.ipsContainer>.content>.title
+{
+  font-size : 1.2em;
+  font-weight: bold;
+  color: rgba(0,0,0,0.5)/*fch*/;
+}
+
+/* Zwischenüberschriften */
+.ipsContainer>.content>[class*='title.color=accent'].icon + .title
+{
+  font-size : 0.9em;
+  font-weight: bold;
+  color: rgba(0,0,0,0.5)/*fch*/;
+}
+
+
+
+/* ----------------------------
+   Werteeingabe Kreis
+   ---------------------------- */
+.ipsDialog.ipsCirclesliderDialog .backgroundStripesCircle {
+fill: none;
+stroke: rgba(0,0,0,0.12)/*scc1*/;
+stroke-width: 4px;
+}
+
+.ipsDialog.ipsCirclesliderDialog .backgroundCircle {
+fill: none;
+stroke: rgba(0,0,0,0.12)/*scc1*/;
+stroke-width: 4px;
+}
+
+.ipsDialog.ipsCirclesliderDialog .progressBar {
+fill: none;
+stroke: #9E9E9E/*ac*/;
+stroke-width: 8px;
+stroke-linecap:"round";
+}
+
+.ipsDialog.ipsCirclesliderDialog .sliderHandle {
+    fill: #9E9E9E/*ac*/;
+    stroke: #9E9E9E/*ac*/;
+    filter: drop-shadow( -5px -5px 5px #000 );
+}
+
+.ipsDialog.ipsCirclesliderDialog svg text {
+    font-size: 1.5em;
+    text-align: center;
+    fill: #9E9E9E/*ac*/;
+}
+
+.ipsDialog.ipsCirclesliderDialog .preselectLabel {
+   margin-top: 4%;
+   margin-bottom: 4%;
+   padding-top: 4%;
+   padding-bottom: 4%;
+}
+
+.ipsDialog.ipsCirclesliderDialog .preselectLabel:hover {
+   background: #9E9E9E/*ac*/;
+   color: #FFFFFF/*fcn*/;
+   box-shadow: 0 3px 6px rgba(0,0,0,0.12)/*sca1*/, 0 3px 6px rgba(0,0,0,0.24)/*sca2*/;
+
+}
+/* --------------------------
+   Sonstiges
+   -------------------------- */
+
+/* iFrame ohne Border */
+iframe {
+  border-style: solid;
+  border-color: transparent;
+}
+
+
+/*
+@media (max-width: 480px) {
+.ipsCategory>.container {
+  min-width:100%;
+  }
+}
+*/
+
+
+.ipsCategory>.container .content .visual>.text.colored {
+    background: transparent;
+}
+
+
+.ipsCategory>.container .childContainers {
+    background: transparent;
+    border-color: transparent;
+    margin: 0px 8px 0px 0px;
+}
+
+.ipsCategory>.container .extended>.media {
+    background: transparent;
+    border-color: transparent;
+}
+
+
+
+/* --------------------------
+   Dialoge
+   -------------------------- */
+
+/* aussen - abdunkeln des Rests */
+.ipsDialog.modal {
+  background-image: none;
+  background-color: rgba(0,0,0, 0.25);
+}
+
+/* innen */
+.ipsDialog>div {
+  background-image: none;
+  background: #757575/*bcn*/;
+  border-color: transparent;
+  border-radius: 2px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.48)/*scd1*/, 0 10px 10px rgba(0,0,0,0.24)/*scd2*/;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+  top: 10%;
+  font-size: 17px;
+}
+
+/*
+.ipsContainer>.content>[class*='title.width=32px'].icon + .title{
+.ipsDialog>div {
+*/
+
+.ipsDialog>div>.content {
+  right: 0px!important;
+  background: #FAFAFA/*bc*/;
+}
+
+/* Dialogüberschrift */
+.ipsDialog>div>.title {
+  font-size : 1.2em;
+  color: #FFFFFF/*fcn*/;
+}
+
+.ipsDialog>div>.titleLine {
+    background-image: none;
+}
+.ipsDialog>div>.bottomLine {
+    background-image: none;
+}
+.ipsDialog.ipsColorDialog .verticalLine {
+    background-image: none;
+}
+
+.ipsDialog.ipsEventDialog>div>.content>.outerCenter>.center>.linesContainer>.touchContainer>.sliderContainer>.slider {
+    background-image: none;
+}
+
+/* --------------------------
+   Chart
+   -------------------------- */
+.ipsChart,
+.ipsDialog.ipsChartDialog>div>.content {
+  background-image: none;
+  background: #757575/*bcg*/;
+}
+
+/*sb*//*/sb*/ .ipsChart {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12)/*scc1*/, 0 1px 3px rgba(0,0,0,0.24)/*scc2*/;
+}
+
+/* Chartdialoge groß */
+.ipsChartDialog>div {
+  bottom: 5% !important;
+  left: 3% !important;
+  right: 3% !important;
+  top: 5% !important;
+}
+
+
+/* --------------------------
+   Sonst
+   -------------------------- */
+img {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12)/*scc1*/, 0 1px 3px rgba(0,0,0,0.24)/*scc2*/;
+}
+
+.ipsLogin {
+    background-image: none;
+}
+
+.ipsTabPane>.content {
+    background-image: none;
+}
+
+.ipsCategory > .container .extended > .textBox,
+.ipsCategory > .container .extended > .htmlBox,
+.ipsCategory > .container .extended > .mailBox {
+    background-image: none;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+
+.ipsLogin {
+    background-image: none;
+    background-color: transparent;
+}
+
+
+.ipsNotifications>.ipsNotification{
+  border-radius: 3px;
+  background-image: none;
+  background: #757575/*bcg*/;
+  border-color: transparent;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.48)/*scd1*/, 0 10px 10px rgba(0,0,0,0.24)/*scd2*/;
+}
+
+.ipsNotifications>.ipsNotification>.message{
+  background: #757575/*bcg*/;
+  color: #FFFFFF/*fcn*/;
+}
+
+.ipsNotifications>.ipsNotification>.spacer {
+  height: 0px;
+}
+.ipsNotifications>.ipsNotification>.message.icon>div:first-child {
+  left: 88%;
+  top: 16px;
+}
+
+.ipsNotifications>.ipsNotification>.message.icon>.content {
+  left: 0px;
+  width: 95%;
+  top: 16px;
+}
+/* ---------------------------------------------------------
+   IPS Edit mode
+   --------------------------------------------------------- */
+
+.ipsDialog.ipsEditorDialog>div,
+.editable  .content.exclusive,
+.new
+{
+  border-style: dotted !important;
+  border-width: 1px;
+  border-color: #0D47A1 !important;
+}
+
+.ipsDialog.ipsEditorSelectDialog>div>.content,
+.ipsDialog.ipsEditorDialog>div>.content {
+  font-size: 15px;
+  right: 0px;
+  background: #2196F3;
+  color: #FFFFFF;
+}
+
+.new,
+.new-text,
+.edit,
+.ipsEditorDialog>div,
+.ipsEditorSelectDialog>div,
+.ipsEditorSelectDialog .iconSmall,
+.ipsEditorDialog .iconSmall,
+.ipsEditorDialog .content
+{
+  background-color: #2196F3;
+  opacity: 1.0 !important;
+}
+
+.ipsEditorSelectDialog .treeIcon,
+.ipsEditorSelectDialog label
+{
+  opacity: 1.0 !important;
+}
+.ipsDialog.ipsEditorDialog>div>.content>ol>li>select>option,
+.ipsDialog.ipsEditorDialog>div>.content>select>option
+{
+  background-color: #FAFAFA/*bc*/;
+}
+
+.save.icon,
+.edit.icon,
+.edit.iconSmall,
+.edit.iconExtraSmall,
+.new.icon,
+.new-text.iconExtraSmall
+{
+  box-shadow: 0 0 4px rgba(0,0,0,0.48)/*scd1*/, 0 14px 28px rgba(0,0,0,0.24)/*scd2*/;
+  border-radius: 50%;
+  padding: 2px 4px 2px 0px;
+  border-width: 0px !important;
+  background-color: #2196F3;
+}
+
+.ipsWebFront.editable>.save
+{
+  background-color: #8BC34A;
+  border-width: 0px !important;
+  opacity: 1.0 !important;
+}
+
+.new:hover,
+.new-text:hover,
+.edit:hover,
+.save.icon:hover,
+.edit.icon:hover,
+.edit.iconSmall:hover,
+.edit.iconExtraSmall:hover,
+.new.icon:hover,
+.new-text.iconExtraSmall:hover
+{
+  box-shadow: 0 14px 28px rgba(0,0,0,0.48)/*scd1*/, 0 10px 10px rgba(0,0,0,0.24)/*scd2*/;
+  transition: all 0.2s ease-in-out;
+}
+
+
+/*
+input, textarea, keygen, select, button {
+  font: 17px Arial;
+}
+*/
+
+/*  Hierarchie
+ipsWebFront
+--ipsContainer
+----navigation
+----content
+------category
+*/

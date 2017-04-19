@@ -1,6 +1,6 @@
 <?php
     // Klassendefinition
-    class Ko_Xiaomi extends IPSModule {
+    class XiaomiGateway extends IPSModule {
  
         // Der Konstruktor des Moduls
         // Überschreibt den Standard Kontruktor von IPS

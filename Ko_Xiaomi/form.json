@@ -6,6 +6,7 @@
         { "type": "ValidationTextBox", "name": "ReceiveIP", "caption": "ReceiveIP" },
         { "type": "ValidationTextBox", "name": "ReceivePort", "caption": "Receive Port" },
         { "type": "ValidationTextBox", "name": "MulticastIP", "caption": "MulticastIP" }
+        
     ],
     "actions":
     [

@@ -14,7 +14,7 @@
         // Überschreibt die interne IPS_Create($id) Funktion
         public function Create() {
             // Diese Zeile nicht löschen.
-            $this->RequireParent("{82347F20-F541-41E1-AC5B-A636FD3AE2D8}");
+            $this->RequireParent("{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}"); 
             
             parent::Create(); 
         }

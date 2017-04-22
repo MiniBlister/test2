@@ -23,7 +23,9 @@
             $pid = $this->GetParent();
             if ($pid) {
                 $name = IPS_GetName($pid);
-                if ($name == "Multicast Socket") IPS_SetName($pid, __CLASS__ . " Socket");
+                if ($name == "Multicast Socket") {
+                    IPS_SetName($pid, __CLASS__ . " Socket");
+                }
                 //Set SendHost Property of the MultiCast I/O
                 IPS_SetProperty ( $pid, "Host", "192.168.178.47");
                 //Set BindPort Property of the MultiCast I/O
@@ -32,6 +34,8 @@
                 IPS_SetProperty ( $pid, "MulticastIP", "224.0.0.50");
                 //Set BindPort Property of the MultiCast I/O
                 IPS_SetProperty ( $pid, "BindPort", "9898");
+                //Set Open Property of the MultiCast I/O
+                IPS_SetProperty ( $pid, "Open", true);
             }            
             
             parent::Create(); 

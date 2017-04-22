@@ -1,4 +1,6 @@
 <?php
+
+    include_once(__DIR__ . "/../module_helper.php");
     // Klassendefinition
     class XiaomiGatewaySplitter extends IPSModule {
  
@@ -21,7 +23,7 @@
             $pid = $this->GetParent();
             if ($pid) {
                 $name = IPS_GetName($pid);
-                if ($name == "Client Socket") IPS_SetName($pid, __CLASS__ . " Socket");
+                if ($name == "Mulicast Socket") IPS_SetName($pid, __CLASS__ . " Socket");
             }            
             
             parent::Create(); 

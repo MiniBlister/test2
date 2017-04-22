@@ -1,0 +1,15 @@
+{
+    "id": "{66C1E46E-20B6-42FE-8477-2671A0512DD6}",
+    "name": "XiaomiGatewaySplitter",
+    "type": 2,
+    "vendor": "Kohrs Modules",
+    "aliases":
+    [
+        "Xiaomi Gateway Splitter"
+    ],  
+    "parentRequirements": ["{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}"],
+    "childRequirements": [],
+    "implemented": ["{018EF6B5-AB94-40C6-AA53-46943E824ACF}"],
+    "prefix": "KoXiSp"
+    
+}

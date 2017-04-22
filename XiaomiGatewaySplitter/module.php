@@ -15,6 +15,14 @@
         public function Create() {
             // Diese Zeile nicht löschen.
             
+            //Always create our own MultiCast I/O, when no parent is already available
+            $this->RequireParent("{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}");
+
+            $pid = $this->GetParent();
+            if ($pid) {
+                $name = IPS_GetName($pid);
+                if ($name == "Client Socket") IPS_SetName($pid, __CLASS__ . " Socket");
+            }            
             
             parent::Create(); 
         }
@@ -23,8 +31,7 @@
         public function ApplyChanges() {
             // Diese Zeile nicht löschen
             
-            //Always create our own MultiCast I/O, when no parent is already available
-            $this->RequireParent("{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}"); 
+ 
             
             parent::ApplyChanges();
         }

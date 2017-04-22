@@ -2,7 +2,7 @@
 
     include_once(__DIR__ . "/../module_helper.php");
     // Klassendefinition
-    class XiaomiGatewaySplitter extends IPSModule {
+    class XiaomiGatewaySplitter extends KoHelpDModule {
  
         // Der Konstruktor des Moduls
         // Überschreibt den Standard Kontruktor von IPS

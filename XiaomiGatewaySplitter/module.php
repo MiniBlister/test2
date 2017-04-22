@@ -24,6 +24,7 @@
             if ($pid) {
                 $name = IPS_GetName($pid);
                 if ($name == "Multicast Socket") IPS_SetName($pid, __CLASS__ . " Socket");
+                print IPS_GetConfigurationForm ( $pid ):
             }            
             
             parent::Create(); 

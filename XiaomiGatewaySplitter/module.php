@@ -23,7 +23,7 @@
             $pid = $this->GetParent();
             if ($pid) {
                 $name = IPS_GetName($pid);
-                if ($name == "Mulicast Socket") IPS_SetName($pid, __CLASS__ . " Socket");
+                if ($name == "Multicast Socket") IPS_SetName($pid, __CLASS__ . " Socket");
             }            
             
             parent::Create(); 

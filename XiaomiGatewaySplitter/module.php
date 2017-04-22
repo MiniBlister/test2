@@ -23,7 +23,7 @@
         public function ApplyChanges() {
             // Diese Zeile nicht löschen
             
-            //Always create our own MultiCast I/o, when no parent is already available
+            //Always create our own MultiCast I/O, when no parent is already available
             $this->RequireParent("{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}"); 
             
             parent::ApplyChanges();

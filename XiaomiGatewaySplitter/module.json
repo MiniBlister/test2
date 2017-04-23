@@ -8,8 +8,8 @@
         "Xiaomi Gateway Splitter"
     ],  
     "parentRequirements": ["{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}"],
-    "childRequirements": ["{B237D1DF-B9B0-4A8D-8EC5-B4F7A88E54FC}"],
-    "implemented": ["{018EF6B5-AB94-40C6-AA53-46943E824ACF}"],
+    "childRequirements": ["{B75DE28A-A29F-4B11-BF9D-5CC758281F38}"],
+    "implemented": ["{018EF6B5-AB94-40C6-AA53-46943E824ACF}","{E496ED12-5963-4494-87F3-E537175E7418}"],
     "prefix": "KoXiSp"
     
 }

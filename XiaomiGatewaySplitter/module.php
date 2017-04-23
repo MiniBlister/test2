@@ -64,7 +64,7 @@
             IPS_LogMessage("XiaomiGateway RECV", utf8_decode($data->Buffer));
             //We would parse our payload here before sending it further...
             //Lets just forward to our children
-            $this->SendDataToChildren(json_encode(Array("DataID" => "{66C1E46E-20B6-42FE-8477-2671A0512DD6}", "Buffer" => $data->Buffer)));
+            $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
 	}
         /**
         * Die folgenden Funktionen stehen automatisch zur Verfügung, wenn das Modul über die "Module Control" eingefügt wurden.

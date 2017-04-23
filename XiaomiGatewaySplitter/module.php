@@ -16,7 +16,7 @@
         // Überschreibt die interne IPS_Create($id) Funktion
         public function Create() {
             // Diese Zeile nicht löschen.
-            
+            parent::Create();
             //Always create our own MultiCast I/O, when no parent is already available
             $this->RequireParent("{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}");
 
@@ -38,15 +38,12 @@
                 IPS_SetProperty ( $pid, "Open", true);
             }            
             
-            parent::Create(); 
+             
         }
  
         // Überschreibt die intere IPS_ApplyChanges($id) Funktion
         public function ApplyChanges() {
             // Diese Zeile nicht löschen
-            
- 
-            
             parent::ApplyChanges();
         }
         public function ForwardData($JSONString)

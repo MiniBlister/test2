@@ -16,9 +16,10 @@
         // Überschreibt die interne IPS_Create($id) Funktion
         public function Create() {
             // Diese Zeile nicht löschen.
+            parent::Create();
             
-            //Always create our own MultiCast I/O, when no parent is already available
-            $this->RequireParent("{7553773d-45e4-4334-9d37-dbf9c7ca1778}");
+            //Always create our own Splitter, when no parent is already available
+            $this->RequireParent("{66C1E46E-20B6-42FE-8477-2671A0512DD6}");
 
             $pid = $this->GetParent();
             
@@ -29,15 +30,12 @@
                 }
             }            
             
-            parent::Create(); 
+            
         }
  
         // Überschreibt die intere IPS_ApplyChanges($id) Funktion
         public function ApplyChanges() {
             // Diese Zeile nicht löschen
-            
- 
-            
             parent::ApplyChanges();
         }
         public function ForwardData($JSONString)

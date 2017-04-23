@@ -51,7 +51,7 @@
             $data = json_decode($JSONString);
             IPS_LogMessage("XiaomiGateway FRWD", utf8_decode($data->Buffer));
             //We would package our payload here before sending it further...
-            $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $data->Buffer)));
+            $this->SendDataToParent(json_encode(Array("DataID" => "{B237D1DF-B9B0-4A8D-8EC5-B4F7A88E54FC}", "Buffer" => $data->Buffer)));
 			
             //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data
             //Then we should extract the relevant feedback/data and return it to the caller

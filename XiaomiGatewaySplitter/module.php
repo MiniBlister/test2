@@ -73,7 +73,10 @@
                 $pid = $this->GetParent();
                 if ($pid) {
                     if (IPS_GetProperty($pid, "Host") != $gatewayip->ip) {
+                        //Set the Host Address to the Address provided by the Gateway witht the Multicast Address
                         IPS_SetProperty ( $pid, "Host", $gatewayip->ip);
+                        //Apply Changes
+                        IPS_ApplyChanges($pid);
                     }
                 }
             }

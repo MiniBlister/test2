@@ -67,7 +67,7 @@
             IPS_LogMessage("XiaomiGateway RECV", utf8_decode($data->Buffer));
             
             //We need to check IP Address of the Gateway and Update Parent Property accordingly
-            print_r ($data);
+            print_r (json_decode($data->Buffer));
             
             //We would parse our payload here before sending it further...
             //Lets just forward to our children

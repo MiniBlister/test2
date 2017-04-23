@@ -51,7 +51,7 @@
             $data = json_decode($JSONString);
             IPS_LogMessage("XiaomiGateway FRWD", utf8_decode($data->Buffer));
             //We would package our payload here before sending it further...
-            $this->SendDataToParent(json_encode(Array("DataID" => "{B237D1DF-B9B0-4A8D-8EC5-B4F7A88E54FC}", "Buffer" => $data->Buffer)));
+            $this->SendDataToParent(json_encode(Array("DataID" => "{66C1E46E-20B6-42FE-8477-2671A0512DD6}", "Buffer" => $data->Buffer)));
 			
             //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data
             //Then we should extract the relevant feedback/data and return it to the caller
@@ -64,7 +64,7 @@
             IPS_LogMessage("XiaomiGateway RECV", utf8_decode($data->Buffer));
             //We would parse our payload here before sending it further...
             //Lets just forward to our children
-            $this->SendDataToChildren(json_encode(Array("DataID" => "{66164EB8-3439-4599-B937-A365D7A68567}", "Buffer" => $data->Buffer)));
+            $this->SendDataToChildren(json_encode(Array("DataID" => "{66C1E46E-20B6-42FE-8477-2671A0512DD6}", "Buffer" => $data->Buffer)));
 	}
         /**
         * Die folgenden Funktionen stehen automatisch zur Verfügung, wenn das Modul über die "Module Control" eingefügt wurden.

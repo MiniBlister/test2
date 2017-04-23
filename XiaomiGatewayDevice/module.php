@@ -65,6 +65,13 @@
         * ABC_MeineErsteEigeneFunktion($id);
         *
         */
+        
+        public function KoXiDe_GetIDList() {
+            // Selbsterstellter Code
+            ForwardData('{"cmd" : "get_id_list"}');
+        }
+        
+        
 
     }
 ?>

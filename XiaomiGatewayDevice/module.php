@@ -68,7 +68,8 @@
         
         public function KoXiDe_GetIDList() {
             // Selbsterstellter Code
-            $this->ForwardData('{"cmd" : "get_id_list"}');
+            $test['cmd'] = 'get_id_list';
+            $this->ForwardData(json_encode($test));
         }
         
         

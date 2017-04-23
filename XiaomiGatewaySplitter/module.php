@@ -70,7 +70,12 @@
             $gateway =  json_decode($data->Buffer);
             if ($gateway->cmd == "heartbeat" && $gateway->model == "gateway") {
                 $gatewayip= json_decode($gateway->data);
-                print_r($gatewayip);
+                $pid = $this->GetParent();
+                if ($pid) {
+                    if (IPS_GetProperty($pid, "Host") != $gatewayip->ip) {
+                        IPS_SetProperty ( $pid, "Host", $gatewayip->ip);
+                    }
+                }
             }
             
             //We would parse our payload here before sending it further...

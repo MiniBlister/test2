@@ -1,0 +1,22 @@
+{
+    "elements":
+    [
+        { "type": "ValidationTextBox", "name": "XiaomiGatewayIP", "caption": "Xiaomi Gateway IP" },
+        { "type": "ValidationTextBox", "name": "XiaomiGatewayPort", "caption": "Xiaomi Gateway Port" },
+        { "type": "ValidationTextBox", "name": "ReceiveIP", "caption": "ReceiveIP" },
+        { "type": "ValidationTextBox", "name": "ReceivePort", "caption": "Receive Port" },
+        { "type": "ValidationTextBox", "name": "MulticastIP", "caption": "MulticastIP" }
+        
+    ],
+    "actions":
+    [
+               
+    ],
+    "status":
+    [
+        { "code": 101, "icon": "active", "caption": "Instance getting created!" },
+        { "code": 102, "icon": "active", "caption": "Instance is active!" },
+        { "code": 104, "icon": "inactive", "caption": "Instance is inactive!" }
+        
+    ]
+}

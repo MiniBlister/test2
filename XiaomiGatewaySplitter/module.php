@@ -53,8 +53,6 @@
             $data = json_decode($JSONString);
             IPS_LogMessage("XiaomiGateway FRWD", utf8_decode($data->Buffer));
             
-            //We need to check IP Address of the Gateway and Update Parent Property accordingly
-            print_r ($data);
             //We would package our payload here before sending it further...
             $this->SendDataToParent(json_encode(Array("DataID" => "{66C1E46E-20B6-42FE-8477-2671A0512DD6}", "Buffer" => $data->Buffer)));
 			
@@ -67,6 +65,10 @@
 	{
             $data = json_decode($JSONString);
             IPS_LogMessage("XiaomiGateway RECV", utf8_decode($data->Buffer));
+            
+            //We need to check IP Address of the Gateway and Update Parent Property accordingly
+            print_r ($data);
+            
             //We would parse our payload here before sending it further...
             //Lets just forward to our children
             $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));

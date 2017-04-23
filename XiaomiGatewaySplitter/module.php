@@ -68,8 +68,10 @@
             
             //We need to check IP Address of the Gateway and Update Parent Property accordingly
             $gateway =  json_decode($data->Buffer);
-            $gatewayip= json_decode($gateway->data);
-            print_r($gateway);
+            if ($gateway->cmd == "heartbeat" && $gateway->model == "gateway") {
+                $gatewayip= json_decode($gateway->data);
+                print_r($gatewayip);
+            }
             
             //We would parse our payload here before sending it further...
             //Lets just forward to our children

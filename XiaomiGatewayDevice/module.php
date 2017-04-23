@@ -21,14 +21,14 @@
             $this->RequireParent("{7553773d-45e4-4334-9d37-dbf9c7ca1778}");
 
             $pid = $this->GetParent();
-            /*
+            
             if ($pid) {
                 $name = IPS_GetName($pid);
                 if ($name == "Multicast Socket") {
-                    IPS_SetName($pid, __CLASS__ . " Socket");
+                    IPS_SetName($pid, __CLASS__ . " Splitter");
                 }
             }            
-            */
+            
             parent::Create(); 
         }
  

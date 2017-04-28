@@ -23,4 +23,41 @@ class KoHelpDModule extends IPSModule
         }
         return $parent;
     }
+    
+    private function SetValueBoolean($Ident, $value)
+    {
+        $id = $this->GetIDForIdent($Ident);
+        if (GetValueBoolean($id) <> $value)
+        {
+            SetValueBoolean($id, $value);
+            return true;
+        }
+        return false;
+    }
+    private function SetValueInteger($Ident, $value)
+    {
+        $id = $this->GetIDForIdent($Ident);
+        if (GetValueInteger($id) <> $value)
+        {
+            SetValueInteger($id, $value);
+            return true;
+        }
+        return false;
+    }
+    private function SetValueString($Ident, $value)
+    {
+        $id = $this->GetIDForIdent($Ident);
+        if (GetValueString($id) <> $value)
+        {
+            SetValueString($id, $value);
+            return true;
+        }
+        return false;
+    }
+    
+    protected function SetStatus($InstanceStatus)
+    {
+        if ($InstanceStatus <> IPS_GetInstance($this->InstanceID)['InstanceStatus'])
+            parent::SetStatus($InstanceStatus);
+    }
 }

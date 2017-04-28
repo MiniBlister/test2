@@ -70,7 +70,7 @@
             // Selbsterstellter Code
             $payload = array("cmd" => "get_id_list");
             $this->SendDebug("Send Data:",json_encode($payload),0);
-            $res = $this->SendDataToParent(json_encode(Array("DataID" => "{66C1E46E-20B6-42FE-8477-2671A0512DD6}", "Buffer" => $payload)));
+            $res = $this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => $payload)));
             print_r ($res);
         }
         

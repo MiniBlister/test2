@@ -50,17 +50,33 @@
         }
         public function ForwardData($JSONString)
 	{
+          
+            $debug = $this->ReadPropertyBoolean('Debug');
+            // Empfangene Daten von der Device Instanz
             $data = json_decode($JSONString);
-            
-            
-            IPS_LogMessage("XiaomiGateway FRWD", utf8_decode($data->Buffer));
-            
+            $datasend = $data->Buffer;
+            $datasend = json_encode($datasend);
+            $this->SendDebug("Forward Data:",$datasend,0);
+
+            // Hier würde man den Buffer im Normalfall verarbeiten
+            // z.B. CRC prüfen, in Einzelteile zerlegen
+            try
+            {
+                    //
+            }
+            catch (Exception $ex)
+            {
+                    echo $ex->getMessage();
+                    echo ' in '.$ex->getFile().' line: '.$ex->getLine().'.';
+            }
+
+              
             //We would package our payload here before sending it further...
-            $this->SendDataToParent(json_encode(Array("DataID" => "{66C1E46E-20B6-42FE-8477-2671A0512DD6}", "Buffer" => $data->Buffer)));
+            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $data->Buffer)));
 			
             //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data
             //Then we should extract the relevant feedback/data and return it to the caller
-            return "String data for the device instance!";
+            return $result;
 	}
 		
 	public function ReceiveData($JSONString)

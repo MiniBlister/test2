@@ -70,7 +70,7 @@
             // Selbsterstellter Code
             $test['cmd'] = 'get_id_list';
             $res = $this->SendDataToParent(json_encode(Array("DataID" => "{66C1E46E-20B6-42FE-8477-2671A0512DD6}", "Buffer" => $test['cmd'])));
-            
+            print_r ($res);
         }
         
         

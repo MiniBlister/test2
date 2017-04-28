@@ -69,7 +69,8 @@
         public function KoXiDe_GetIDList() {
             // Selbsterstellter Code
             $test['cmd'] = 'get_id_list';
-            $this->ForwardData($test['cmd']);
+            $res = $this->SendDataToParent(json_encode(Array("DataID" => "{66C1E46E-20B6-42FE-8477-2671A0512DD6}", "Buffer" => utf8_encode($test))));
+            
         }
         
         

@@ -51,7 +51,7 @@
         public function ForwardData($JSONString)
 	{
           
-            $debug = $this->ReadPropertyBoolean('Debug');
+            //$debug = $this->ReadPropertyBoolean('Debug');
             // Empfangene Daten von der Device Instanz
             $data = json_decode($JSONString);
             $datasend = $data->Buffer;

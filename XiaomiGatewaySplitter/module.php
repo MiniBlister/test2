@@ -51,6 +51,8 @@
         public function ForwardData($JSONString)
 	{
             $data = json_decode($JSONString);
+            
+            
             IPS_LogMessage("XiaomiGateway FRWD", utf8_decode($data->Buffer));
             
             //We would package our payload here before sending it further...

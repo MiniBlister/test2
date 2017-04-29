@@ -59,7 +59,7 @@
             $datasend = $data->Buffer;
             $datasend = json_decode($datasend);
             print_r($datasend);
-           $payload = array("cmd" => $datasend['cmd']);
+           $payload = array("cmd" => $datasend->cmd]);
            
             $this->SendDebug("test Data:",$datasend,0);
 

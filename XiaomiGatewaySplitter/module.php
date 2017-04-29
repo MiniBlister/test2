@@ -58,7 +58,7 @@
             
             $datasend = $data->Buffer;
             $datasend = json_decode($datasend);
-            print_r($datasend);
+           
             $this->SendDebug("test Data:",$datasend,0);
 
             // Hier würde man den Buffer im Normalfall verarbeiten
@@ -75,7 +75,7 @@
 
               
             //We would package our payload here before sending it further...
-            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $data->Buffer)));
+            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $datasend)));
 			
             //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data
             //Then we should extract the relevant feedback/data and return it to the caller

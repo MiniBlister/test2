@@ -58,8 +58,6 @@
             
             $datasend = $data->Buffer;
             $datasend = json_decode($datasend);
-  
-            $payload = array("cmd" => $datasend->cmd);
 
             //$this->SendDebug("test Data:",$datasend,0);
 
@@ -67,7 +65,7 @@
             // z.B. CRC prüfen, in Einzelteile zerlegen
             try
             {
-                    //
+                $payload = array("cmd" => $datasend->cmd);
             }
             catch (Exception $ex)
             {

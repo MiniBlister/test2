@@ -54,6 +54,7 @@
             //$debug = $this->ReadPropertyBoolean('Debug');
             // Empfangene Daten von der Device Instanz
             print_r($JSONString);
+            print "hallo";
             $data = json_decode($JSONString);
             $datasend = $data->Buffer;
             $datasend = json_encode($datasend);

@@ -57,7 +57,7 @@
             $data = json_decode($JSONString);
             
             $datasend = $data->Buffer;
-            $datasend = json_encode($datasend);
+            $datasend = json_decode($datasend);
             print_r($datasend);
             $this->SendDebug("test Data:",$datasend,0);
 

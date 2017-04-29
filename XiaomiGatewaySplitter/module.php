@@ -57,7 +57,7 @@
             $data = json_decode($JSONString);
             $datasend = $data->Buffer;
             $datasend = json_encode($datasend);
-            $this->SendDebug("Forward Data:",$datasend,0);
+            $this->SendDebug("test Data:",$datasend,0);
 
             // Hier würde man den Buffer im Normalfall verarbeiten
             // z.B. CRC prüfen, in Einzelteile zerlegen

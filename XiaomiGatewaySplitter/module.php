@@ -58,10 +58,10 @@
             
             $datasend = $data->Buffer;
             $datasend = json_decode($datasend);
-            print_r($datasend);
-           $payload = array("cmd" => $datasend->cmd);
+  
+            $payload = array("cmd" => $datasend->cmd);
 
-        $this->SendDebug("test Data:",$datasend,0);
+            //$this->SendDebug("test Data:",$datasend,0);
 
             // Hier würde man den Buffer im Normalfall verarbeiten
             // z.B. CRC prüfen, in Einzelteile zerlegen

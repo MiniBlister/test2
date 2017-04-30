@@ -4,7 +4,7 @@
     // Klassendefinition
     class XiaomiGatewaySplitter extends KoHelpDModule {
         
-        public $sidmode = array();
+        public $sidmode;
         
         // Der Konstruktor des Moduls
         // Überschreibt den Standard Kontruktor von IPS
@@ -108,7 +108,7 @@
                     
                     $this->SetBuffer($gateway->sid,$gateway->model);
                     
-                    $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
+                    //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
                     
                     break;
 

@@ -50,7 +50,7 @@
 	{
             $data = json_decode($JSONString);
             IPS_LogMessage("Xiaomi Door RECV", utf8_decode($data->Buffer));
-            $data = json_decode($date->Buffer);
+            $data = json_decode($data->Buffer);
             print_r ($data);
             //We would parse our payload here before sending it further...
             //Lets just forward to our children

@@ -4,7 +4,7 @@
     // Klassendefinition
     class XiaomiGatewaySplitter extends KoHelpDModule {
         
-        private $sidmode = array();
+        public $sidmode = array();
         
         // Der Konstruktor des Moduls
         // Überschreibt den Standard Kontruktor von IPS

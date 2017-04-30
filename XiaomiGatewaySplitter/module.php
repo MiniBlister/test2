@@ -18,7 +18,7 @@
             // Diese Zeile nicht löschen.
             parent::Create();
             //Always create our own MultiCast I/O, when no parent is already available
-            $this->RequireParent("{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}");
+            $this->ConnectParent("{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}");
 
             $pid = $this->GetParent();
             if ($pid) {

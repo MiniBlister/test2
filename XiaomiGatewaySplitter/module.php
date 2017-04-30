@@ -103,9 +103,11 @@
                         $idlist = $this->GetList(json_decode($gateway->data));
                     break;
                 case "read_ack":    
-                    //$result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
-                    print_r($gateway);
-                    //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
+                    
+                    $test[]["id"] = $gateway->sid;
+                    $test[]["model"] = $gateway->model;
+                    print_r($test);
+                    $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
                     
                     break;
 

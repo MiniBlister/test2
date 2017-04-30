@@ -19,7 +19,7 @@
             parent::Create();
             
             //Always create our own Splitter, when no parent is already available
-            $this->RequireParent("{66C1E46E-20B6-42FE-8477-2671A0512DD6}");
+            $this->ConnectParent ("{66C1E46E-20B6-42FE-8477-2671A0512DD6}");
                 
             //$this->SetParentName("Multicast Socket", "Splitter");
                         

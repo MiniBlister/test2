@@ -110,15 +110,15 @@
                     $this->SetBuffer($gateway->sid,$gateway->model);
                     $this->sidmode[] = $gateway->sid;
                     //print_r($this->sidmode);
-                    //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
-                    
+                       
                     break;
 
                 default:
                     break;
             }
           
-            
+            $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
+                 
             //We would parse our payload here before sending it further...
             //Lets just forward to our children
             

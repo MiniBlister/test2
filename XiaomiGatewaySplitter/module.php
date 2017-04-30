@@ -66,6 +66,7 @@
             try
             {
                 $payload = array("cmd" => $datasend->cmd);
+                
             }
             catch (Exception $ex)
             {
@@ -89,17 +90,21 @@
             
             //We need to check IP Address of the Gateway and Update Parent Property accordingly
             $gateway =  json_decode($data->Buffer);
-            if ($gateway->cmd == "heartbeat" && $gateway->model == "gateway") {
-                $gatewayip= json_decode($gateway->data);
-                $pid = $this->GetParent();
-                if ($pid) {
-                    if (IPS_GetProperty($pid, "Host") != $gatewayip->ip) {
-                        //Set the Host Address to the Address provided by the Gateway witht the Multicast Address
-                        IPS_SetProperty ( $pid, "Host", $gatewayip->ip);
-                        //Apply Changes
-                        IPS_ApplyChanges($pid);
+            
+            switch ($gateway->cmd) {
+                case "heartbeat":
+                    if ($gateway->model == "gateway") {
+                        SetGatewayIP($gateway);
                     }
-                }
+
+                    break;
+
+                default:
+                    break;
+            }
+          
+            if ($gateway->cmd == "heartbeat" && $gateway->model == "gateway") {
+                
             }
             
             //We would parse our payload here before sending it further...
@@ -113,6 +118,19 @@
         * ABC_MeineErsteEigeneFunktion($id);
         *
         */
+        //Set the IP Address of Gateway in case this will be provided
+        private function SetGatewayIP ($gateway) {
+            $gatewayip= json_decode($gateway->data);
+            $pid = $this->GetParent();
+            if ($pid) {
+                if (IPS_GetProperty($pid, "Host") != $gatewayip->ip) {
+                    //Set the Host Address to the Address provided by the Gateway witht the Multicast Address
+                    IPS_SetProperty ( $pid, "Host", $gatewayip->ip);
+                    //Apply Changes
+                    IPS_ApplyChanges($pid);
+                }
+            }    
+        } 
 
     }
 ?>

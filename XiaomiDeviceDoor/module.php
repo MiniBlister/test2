@@ -62,7 +62,7 @@
         *
         */
         
-        private function XiDoor_ShowIDs() {
+        private function ShowIDs() {
             
             $payload = array("cmd" => "get_id_list");
             $this->SendDebug("Send Data:",json_encode($payload),0);

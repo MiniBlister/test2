@@ -50,6 +50,7 @@
 	{
             $data = json_decode($JSONString);
             IPS_LogMessage("Xiaomi Door RECV", utf8_decode($data->Buffer));
+            print_r ($data);
             //We would parse our payload here before sending it further...
             //Lets just forward to our children
             //$this->SendDataToChildren(json_encode(Array("DataID" => "{C5A51178-2760-49DA-9175-1ED71975753C}", "Buffer" => $data->Buffer)));

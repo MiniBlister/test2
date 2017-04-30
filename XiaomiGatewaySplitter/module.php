@@ -78,6 +78,7 @@
 
               
             //We would package our payload here before sending it further...
+            $this->SendDebug("Send Data:",json_encode($payload),0);
             $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
 			
             //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data

@@ -126,7 +126,7 @@
         *
         */
         //Set the IP Address of Gateway in case this will be provided
-        private function SetGatewayIP ($gateway) {
+        public function SetGatewayIP ($gateway) {
         /* @var $gateway object */
         $gatewayip= json_decode($gateway->data);
             $pid = $this->GetParent();
@@ -141,7 +141,7 @@
         } 
         
         //Get ID list and details for Sensors
-        private function GetList ($ids){
+        public function GetList ($ids){
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));

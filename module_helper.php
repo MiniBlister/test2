@@ -55,9 +55,23 @@ class KoHelpDModule extends IPSModule
         return false;
     }
     
+    private function SetParentName ($GetName, $SetName) {
+            $pid = $this->GetParent();
+            
+            if ($pid) {
+                $name = IPS_GetName($pid);
+                if ($name == $GetName) {
+                    IPS_SetName($pid, __CLASS__ . " " . $SetName);
+                }
+            }  
+        
+    }
+    
     protected function SetStatus($InstanceStatus)
     {
         if ($InstanceStatus <> IPS_GetInstance($this->InstanceID)['InstanceStatus'])
             parent::SetStatus($InstanceStatus);
     }
+    
+    
 }

@@ -1,0 +1,16 @@
+{
+    "elements":
+    [
+        { "type": "ValidationTextBox", "name": "doorid", "caption": "Sensor ID" },
+        { "type": "ValidationTextBox", "name": "location", "caption": "sensor location" }
+        
+    ],
+    "actions":
+    [
+         { "type": "Button", "label": "Search IDs", "onClick": "XiDoor_ShowIDs($id);" }      
+    ],
+    "status":
+    [
+        
+    ]
+}

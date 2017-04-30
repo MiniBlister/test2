@@ -106,8 +106,8 @@
                     break;
                 case "read_ack":    
                     
-                    $this->sidmode[]['sid'] = $gateway->sid;
-                    $this->sidmode[]["model"] = $gateway->model;
+                    array_push($this->sidmode,$gateway->sid);
+                    //$this->sidmode[]["model"] = $gateway->model;
                     print_r($this->sidmode);
                     $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
                     

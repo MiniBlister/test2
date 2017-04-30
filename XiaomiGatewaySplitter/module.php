@@ -120,7 +120,8 @@
         */
         //Set the IP Address of Gateway in case this will be provided
         private function SetGatewayIP ($gateway) {
-            $gatewayip= json_decode($gateway->data);
+        /* @var $gateway object */
+        $gatewayip= json_decode($gateway->data);
             $pid = $this->GetParent();
             if ($pid) {
                 if (IPS_GetProperty($pid, "Host") != $gatewayip->ip) {

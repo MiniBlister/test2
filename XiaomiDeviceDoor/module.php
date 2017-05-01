@@ -96,12 +96,12 @@
         public function GetList ($ids){
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
-                $result = @$this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload)))); 
-                $res[$key] = json_decode($result); 
+                $result[$key] = @$this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload)))); 
+                
                 
             }
-            print_r ($res);
-            return $res;
+            print_r ($result);
+            return $result;
         }
         
         public function ShowIDs() {

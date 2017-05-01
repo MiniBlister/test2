@@ -51,72 +51,7 @@
             // Diese Zeile nicht löschen
             parent::ApplyChanges();
         }
-        public function ForwardData($JSONString)
-	{
-          
-            //$debug = $this->ReadPropertyBoolean('Debug');
-            // Empfangene Daten von der Device Instanz
-            
-            $data = json_decode($JSONString);
-            
-            $xidata = json_decode($data->Buffer);
-            //print_r ($xidata);
-            //$this->SendDebug("test Data:",$datasend,0);
-
-            // Hier würde man den Buffer im Normalfall verarbeiten
-            // z.B. CRC prüfen, in Einzelteile zerlegen
-            try
-            {
-                         
-                
-            }
-            catch (Exception $ex)
-            {
-                    echo $ex->getMessage();
-                    echo ' in '.$ex->getFile().' line: '.$ex->getLine().'.';
-            }
-
-              
-            //We would package our payload here before sending it further...
-            IPS_LogMessage("Forward Date to I/O:",json_encode($data->Buffer));
-            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $data->Buffer)));
-			
-            //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data
-            //Then we should extract the relevant feedback/data and return it to the caller
-            return $result;
-	}
-		
-	public function ReceiveData($JSONString)
-	{
-            $data = json_decode($JSONString);
-            IPS_LogMessage("XiaomiGateway RECV", utf8_decode($data->Buffer));
-            
-            //We need to check IP Address of the Gateway and Update Parent Property accordingly
-            $gateway =  json_decode($data->Buffer);
-            
-            switch ($gateway->cmd) {
-                case "heartbeat":
-                    if ($gateway->model == "gateway") {
-                        $this->SetGatewayIP($gateway);
-                    }
-                    break;
-                case "get_id_list_ack":
-                    //We would package our payload here before sending it further...
-                    $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));    
-                    break;
-                case "read_ack":    
-                    
-                    $this->SetBuffer($gateway->sid,$gateway->model);
-                    $this->sidmode[] = $gateway->sid;
-                    $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
-                       
-                    break;
-
-                default:
-                    $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
-           
-                    break;
-            }
+        
           
                  
             //We would parse our payload here before sending it further...

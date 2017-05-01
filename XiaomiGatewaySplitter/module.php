@@ -59,7 +59,7 @@
             
             $data = json_decode($JSONString);
             
-            $xidata = json_decode($date->Buffer);
+            $xidata = json_decode($data->Buffer);
             print_r ($data);
             //$this->SendDebug("test Data:",$datasend,0);
 

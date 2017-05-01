@@ -83,7 +83,7 @@
 			
             //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data
             //Then we should extract the relevant feedback/data and return it to the caller
-            return "hallo";
+            return $result;
 	}
 		
 	public function ReceiveData($JSONString)
@@ -116,7 +116,7 @@
                     break;
             }
           
-             return "hallo";    
+              
             //We would parse our payload here before sending it further...
             //Lets just forward to our children
             
@@ -146,4 +146,4 @@
 
 
     }
-?>
+?>  

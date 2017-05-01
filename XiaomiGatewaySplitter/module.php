@@ -149,7 +149,7 @@
         public function GetList ($ids){
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
-                //$result = $this->SendDataToParent(json_encode(Array("DataID" => "{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}", "Buffer" => json_encode($payload))));
+                $result = $this->SendDataToParent(json_encode(Array("DataID" => "{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}", "Buffer" => json_encode($payload))));
                 print "hallo";
             }
         }

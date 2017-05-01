@@ -118,7 +118,7 @@
             }
           
             $result = $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
-                 
+            print_r ($result);     
             //We would parse our payload here before sending it further...
             //Lets just forward to our children
             return $result;

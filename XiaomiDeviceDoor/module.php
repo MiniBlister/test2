@@ -77,7 +77,7 @@
             $xidata = json_decode($data->Buffer);
             if ($xidata->cmd == "get_id_list_ack") {
                 $idlist = $this->GetList(json_decode($xidata->data));
-                print_r ($idlist);
+                //print_r ($idlist);
             }
             //We would parse our payload here before sending it further...
             //Lets just forward to our children

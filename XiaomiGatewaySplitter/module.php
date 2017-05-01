@@ -1,5 +1,5 @@
 <?php
-    // SendDataToParent (BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A)
+    // SendDataToParent (B75DE28A-A29F-4B11-BF9D-5CC758281F38)
     include_once(__DIR__ . "/../module_helper.php");
     // Klassendefinition
     class XiaomiGatewaySplitter extends KoHelpDModule {
@@ -79,7 +79,7 @@
               
             //We would package our payload here before sending it further...
             IPS_LogMessage("Forward Date to I/O:",json_encode($payload));
-            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}", "Buffer" => json_encode($payload))));
+            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload))));
 			
             //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data
             //Then we should extract the relevant feedback/data and return it to the caller
@@ -149,7 +149,7 @@
         public function GetList ($ids){
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
-                $result = $this->SendDataToParent(json_encode(Array("DataID" => "{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}", "Buffer" => json_encode($payload))));
+                $result = $this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload))));
                 print "hallo";
             }
         }

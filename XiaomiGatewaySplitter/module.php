@@ -116,7 +116,7 @@
                     break;
             }
           
-                 
+             return "hallo";    
             //We would parse our payload here before sending it further...
             //Lets just forward to our children
             

@@ -74,10 +74,10 @@
 	{
             $data = json_decode($JSONString);
             IPS_LogMessage("Xiaomi Door RECV", utf8_decode($data->Buffer));
-            $data = json_decode($data->Buffer);
-            if ($data->cmd == "get_id_list_ack") {
-                $ids = json_decode($data->data);
-                print_r ($ids);
+            $xidata = json_decode($data->Buffer);
+            if ($xidata->cmd == "get_id_list_ack") {
+                $idlist = $this->GetList(json_decode($xidata->data));
+                print_r ($idlist)
             }
             //We would parse our payload here before sending it further...
             //Lets just forward to our children
@@ -91,14 +91,15 @@
         *
         */
         
-        public function ShowIDs() {
-            
-            $payload = array("cmd" => "get_id_list");
-            IPS_LogMessage("Send from Device to Splitter ShowIDs():",json_encode($payload));
-            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload))));
-            
-        }
-               
+        //Get ID list and details for Sensors
+        public function GetList ($ids){
+            foreach ($ids as $key=>$value) {
+                $payload = array ("cmd" => "read", "sid" => $value);
+                $result[] = $this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload))));
+                
+            }
+            return $result;
+        }               
         
 
     }

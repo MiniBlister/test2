@@ -60,14 +60,14 @@
             $data = json_decode($JSONString);
             
             $xidata = json_decode($data->Buffer);
-            print_r ($xidata);
+            //print_r ($xidata);
             //$this->SendDebug("test Data:",$datasend,0);
 
             // Hier würde man den Buffer im Normalfall verarbeiten
             // z.B. CRC prüfen, in Einzelteile zerlegen
             try
             {
-                
+                         
                 
             }
             catch (Exception $ex)
@@ -102,7 +102,7 @@
                     break;
                 case "get_id_list_ack":
                     //We would package our payload here before sending it further...
-                        $idlist = $this->GetList(json_decode($gateway->data));
+                        
                     break;
                 case "read_ack":    
                     
@@ -145,14 +145,7 @@
             }    
         } 
         
-        //Get ID list and details for Sensors
-        public function GetList ($ids){
-            foreach ($ids as $key=>$value) {
-                $payload = array ("cmd" => "read", "sid" => $value);
-                $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
-                IPS_LogMessage("Splitter GetList Result", $result);
-            }
-        }
+
 
     }
 ?>

@@ -78,7 +78,7 @@
 
               
             //We would package our payload here before sending it further...
-            $this->SendDebug("Send Data:",json_encode($payload),0);
+            IPS_LogMessage("Forward Date to I/O:",json_encode($payload));
             $result = $this->SendDataToParent(json_encode(Array("DataID" => "{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}", "Buffer" => json_encode($payload))));
 			
             //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data

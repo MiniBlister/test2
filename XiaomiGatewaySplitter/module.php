@@ -106,7 +106,7 @@
                     
                     $this->SetBuffer($gateway->sid,$gateway->model);
                     $this->sidmode[] = $gateway->sid;
-                    //print_r($this->sidmode);
+                    print_r($this->sidmode);
                        
                     break;
 

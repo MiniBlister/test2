@@ -59,16 +59,13 @@
             
             $data = json_decode($JSONString);
             
-            $datasend = $data->Buffer;
-            $datasend = json_decode($datasend);
-
             //$this->SendDebug("test Data:",$datasend,0);
 
             // Hier würde man den Buffer im Normalfall verarbeiten
             // z.B. CRC prüfen, in Einzelteile zerlegen
             try
             {
-                $payload = array("cmd" => $datasend->cmd);
+                
                 
             }
             catch (Exception $ex)
@@ -79,7 +76,7 @@
 
               
             //We would package our payload here before sending it further...
-            IPS_LogMessage("Forward Date to I/O:",json_encode($payload));
+            IPS_LogMessage("Forward Date to I/O:",json_encode($data->Buffer));
             $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $data->Buffer)));
 			
             //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data

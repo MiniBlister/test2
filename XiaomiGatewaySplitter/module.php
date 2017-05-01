@@ -100,7 +100,6 @@
                     if ($gateway->model == "gateway") {
                         $this->SetGatewayIP($gateway);
                     }
-
                     break;
                 case "get_id_list_ack":
                     //We would package our payload here before sending it further...
@@ -110,7 +109,7 @@
                     
                     $this->SetBuffer($gateway->sid,$gateway->model);
                     $this->sidmode[] = $gateway->sid;
-                    //print_r($this->sidmode);
+                    print_r($this->sidmode);
                        
                     break;
 

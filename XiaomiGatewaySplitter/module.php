@@ -80,7 +80,7 @@
               
             //We would package our payload here before sending it further...
             IPS_LogMessage("Forward Date to I/O:",json_encode($payload));
-            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
+            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $data->Buffer)));
 			
             //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data
             //Then we should extract the relevant feedback/data and return it to the caller
@@ -117,11 +117,11 @@
                     break;
             }
           
-            $result = $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
-            print_r ($result);     
+            $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
+                
             //We would parse our payload here before sending it further...
             //Lets just forward to our children
-            return $result;
+            
 	}
         /**
         * Die folgenden Funktionen stehen automatisch zur Verfügung, wenn das Modul über die "Module Control" eingefügt wurden.

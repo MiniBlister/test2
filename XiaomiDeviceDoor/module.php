@@ -97,11 +97,10 @@
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $result = $this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload)))); 
-               
                 $res[$key] = json_decode($result); 
                 
             }
-            
+            print_r ($res);
             return $res;
         }
         
@@ -110,7 +109,7 @@
             $payload = array("cmd" => "get_id_list");
             IPS_LogMessage("Send from Device to Splitter ShowIDs():",json_encode($payload));
             $result = $this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload))));
-           
+            
         }
         
 

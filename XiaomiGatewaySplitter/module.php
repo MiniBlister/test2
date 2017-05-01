@@ -106,8 +106,6 @@
                     break;
                 case "read_ack":    
                     
-                    $this->SetBuffer($gateway->sid,$gateway->model);
-                    $this->sidmode[] = $gateway->sid;
                     $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
                        
                     break;
@@ -132,8 +130,8 @@
         */
         //Set the IP Address of Gateway in case this will be provided
         private function SetGatewayIP ($gateway) {
-        /* @var $gateway object */
-        $gatewayip= json_decode($gateway->data);
+            /* @var $gateway object */
+            $gatewayip= json_decode($gateway->data);
             $pid = $this->GetParent();
             if ($pid) {
                 if (IPS_GetProperty($pid, "Host") != $gatewayip->ip) {

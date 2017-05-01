@@ -60,7 +60,7 @@
             $data = json_decode($JSONString);
             
             $xidata = json_decode($data->Buffer);
-            print_r ($data);
+            print_r ($xidata);
             //$this->SendDebug("test Data:",$datasend,0);
 
             // Hier würde man den Buffer im Normalfall verarbeiten

@@ -58,7 +58,7 @@
             // Empfangene Daten von der Device Instanz
             
             $data = json_decode($JSONString);
-            
+            print_r ($data);
             //$this->SendDebug("test Data:",$datasend,0);
 
             // Hier würde man den Buffer im Normalfall verarbeiten

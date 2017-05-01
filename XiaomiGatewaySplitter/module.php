@@ -58,6 +58,8 @@
             // Empfangene Daten von der Device Instanz
             
             $data = json_decode($JSONString);
+            
+            $xidata = json_decode($date->Buffer);
             print_r ($data);
             //$this->SendDebug("test Data:",$datasend,0);
 

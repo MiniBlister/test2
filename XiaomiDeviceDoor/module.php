@@ -1,5 +1,5 @@
 <?php
-
+    //SendDateToParent(66C1E46E-20B6-42FE-8477-2671A0512DD6)
     include_once(__DIR__ . "/../module_helper.php");
     // Klassendefinition
     class XiaomiSmartDoorWindowSensor extends KoHelpDModule {
@@ -62,7 +62,7 @@
 
               
             //We would package our payload here before sending it further...
-            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload))));
+            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{66C1E46E-20B6-42FE-8477-2671A0512DD6}", "Buffer" => json_encode($payload))));
 			
             //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data
             //Then we should extract the relevant feedback/data and return it to the caller
@@ -95,7 +95,7 @@
             
             $payload = array("cmd" => "get_id_list");
             $this->SendDebug("Send Data:",json_encode($payload),0);
-            $this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload))));
+            $this->SendDataToParent(json_encode(Array("DataID" => "{66C1E46E-20B6-42FE-8477-2671A0512DD6}", "Buffer" => json_encode($payload))));
            
         }
                

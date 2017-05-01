@@ -1,5 +1,5 @@
 <?php
-
+    // SendDataToParent (BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A)
     include_once(__DIR__ . "/../module_helper.php");
     // Klassendefinition
     class XiaomiGatewaySplitter extends KoHelpDModule {
@@ -79,7 +79,7 @@
               
             //We would package our payload here before sending it further...
             $this->SendDebug("Send Data:",json_encode($payload),0);
-            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
+            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}", "Buffer" => json_encode($payload))));
 			
             //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data
             //Then we should extract the relevant feedback/data and return it to the caller
@@ -149,7 +149,7 @@
         public function GetList ($ids){
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
-                //$result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
+                //$result = $this->SendDataToParent(json_encode(Array("DataID" => "{BAB408E0-0A0F-48C3-B14E-9FB2FA81F66A}", "Buffer" => json_encode($payload))));
                 print "hallo";
             }
         }

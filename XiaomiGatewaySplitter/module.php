@@ -148,7 +148,7 @@
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
-                IPS_LogMessage("Splitter GetList Result", utf8_decode($result));
+                IPS_LogMessage("Splitter GetList Result", $result);
             }
         }
 

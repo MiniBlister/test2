@@ -94,9 +94,9 @@
         public function ShowIDs() {
             
             $payload = array("cmd" => "get_id_list");
-            $this->SendDebug("Send Data:",json_encode($payload),0);
-            $this->SendDataToParent(json_encode(Array("DataID" => "{66C1E46E-20B6-42FE-8477-2671A0512DD6}", "Buffer" => json_encode($payload))));
-            print "hallo";
+            $this->IPS_LogMessage("Send from Device to Splitter ShowIDs():",json_encode($payload),0);
+            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{66C1E46E-20B6-42FE-8477-2671A0512DD6}", "Buffer" => json_encode($payload))));
+            print_r($result);
         }
                
         

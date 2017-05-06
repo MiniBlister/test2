@@ -101,7 +101,7 @@
                     break;
                 case "get_id_list_ack":
                     //We would package our payload here before sending it further...
-                    //$this->SendDebug("Splitter get_id_list_ack:",$gateway->data,0);
+                    $this->SendDebug("Splitter get_id_list_ack:", json_encode($gateway),0);
                     $this->GetList(json_decode($gateway->data), $gateway->model, $gateway->sid);
                     
                     //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));    
@@ -160,7 +160,7 @@
         
         public function pushtochild($ids, $model, $sid) {
            $sidmode["cmd"] = "get_modes";
-           $sidmode["model"] = $model;
+           $sidmode["model"] = "gateway";
            $sidmode["sid"] = $sid;
            foreach ($ids as $key=>$value) {
                $sidmode['data'][$key]['sid'] = $value;

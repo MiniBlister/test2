@@ -108,7 +108,6 @@
                 case "read_ack":    
                     
                     $this->SetBuffer($gateway->sid,$gateway->model);
-                    
                        
                     break;
 
@@ -163,7 +162,8 @@
            foreach ($ids as $key=>$value) {
                $sidmode['data'][$key]['sid'] = $value;
                $sidmode['data'][$key]['model'] = $this->GetBuffer($value);
-           } 
+           }
+           
            $this->SendDebug("Push Data SID:",json_encode($sidmode),0); 
            $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $sidmode))); 
         }

@@ -102,14 +102,13 @@
                 case "get_id_list_ack":
                     //We would package our payload here before sending it further...
                     //$this->SendDebug("Splitter get_id_list_ack:",$gateway->data,0);
-                    $this->GetList(json_decode($gateway->data));
+                    $this->GetList(json_decode($gateway->data), $gateway->model, $gateway->sid);
                     
                     //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));    
                     break;
                 case "read_ack":    
                     
                     $this->SetBuffer($gateway->sid,$gateway->model);
-                    $this->sidmode[] = $gateway->model;
                     $this->SendDebug("Read Ack Data:",json_encode($this->sidmode),0);
                     //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
                        
@@ -149,18 +148,20 @@
         }
         
                 //Get ID list and details for Sensors
-        public function GetList ($ids){
+        public function GetList ($ids, $model, $sid){
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
                 //IPS_LogMessage("Xiaomi Door RECV", utf8_decode($result));
             }
-            $this->pushtochild($ids);
+            $this->pushtochild($ids, $model, $sid);
             return $result;
         }
         
-        public function pushtochild($ids) {
-           $sidmode["cmd"] = "get_modes"; 
+        public function pushtochild($ids, $model, $sid) {
+           $sidmode["cmd"] = "get_modes";
+           $sidmode["model"] = $model;
+           $sidmode["sid"] = $sid;
            foreach ($ids as $key=>$value) {
                $sidmode['data'][$key]['sid'] = $value;
                $sidmode['data'][$key]['model'] = $this->GetBuffer($value);

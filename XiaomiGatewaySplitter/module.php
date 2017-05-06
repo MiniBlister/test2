@@ -105,16 +105,10 @@
                     
                     break;
                 case "read_ack":
-                    $buf = $this->GetBuffer("modes");
-                    $buf .= json_encode($gateway);
-                    $this->SetBuffer("modes", $buf);
-                    //$this->SetBuffer($gateway->sid,$gateway->model);
+                    $this->SetBuffer($gateway->sid,$gateway->model);
                        
                     break;
-                case "read_mode_ack":
-                    $this->pushtochild($ids, $model, $sid);
-                    break;
-
+                
                 default:
                     $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
            
@@ -153,11 +147,11 @@
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
+                while ($this->GetBuffer($value) == "") {
+                    IPS_Sleep(10);
+                }
             }
-            $payload['cmd'] = 'read_mode';
-            $payload['sid'] = $sid;
-            $payload['token'] = "hallo";
-            $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
+            $this->pushtochild($ids, $model, $sid);
             return $result;
         }
         

@@ -154,6 +154,7 @@
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
                 //IPS_LogMessage("Xiaomi Door RECV", utf8_decode($result));
+                $this->SendDebug("Get list:",$result,0);
             }
             $this->pushtochild($this->sidmode);
             return $result;

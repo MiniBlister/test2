@@ -93,7 +93,7 @@
             
             //We need to check IP Address of the Gateway and Update Parent Property accordingly
             $gateway =  json_decode($data->Buffer);
-            
+            $this->SendDebug("Receive Data from I/O:",json_encode($gateway),0);
             switch ($gateway->cmd) {
                 case "heartbeat":
                     if ($gateway->model == "gateway") {
@@ -154,7 +154,7 @@
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $result = $this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload))));
-                $this->SendDebug("Push Data:",json_encode($payload),0);
+                
                 //IPS_LogMessage("Xiaomi Door RECV", utf8_decode($result));
             }
             $this->pushtochild($this->sidmode);

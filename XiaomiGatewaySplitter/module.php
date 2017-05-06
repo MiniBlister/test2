@@ -103,7 +103,7 @@
                 case "get_id_list_ack":
                     //We would package our payload here before sending it further...
                     $this->GetList(json_decode($gateway->data));
-                    $this->SendDebug("Splitter get_id_list_ack:",json_decode($gateway->data),0);
+                    $this->SendDebug("Splitter get_id_list_ack:",$gateway->data,0);
                     //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));    
                     break;
                 case "read_ack":    
@@ -153,7 +153,7 @@
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $result = $this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload))));
-                $this->SendDebug("Push Data:",$result,0);
+                $this->SendDebug("Push Data:",json_encode$this->sidmode),0);
                 //IPS_LogMessage("Xiaomi Door RECV", utf8_decode($result));
             }
             $this->pushtochild($this->sidmode);

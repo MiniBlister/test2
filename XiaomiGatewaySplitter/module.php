@@ -102,15 +102,16 @@
                     break;
                 case "get_id_list_ack":
                     //We would package our payload here before sending it further...
-                    $this->GetList(json_decode($gateway->data));
                     $this->SendDebug("Splitter get_id_list_ack:",$gateway->data,0);
+                    $this->GetList(json_decode($gateway->data));
+                    
                     //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));    
                     break;
                 case "read_ack":    
                     
                     $this->SetBuffer($gateway->sid,$gateway->model);
                     $this->sidmode[] = $gateway->model;
-                    $this->SendDebug("Read Ack Data:",$gateway->model,0);
+                    $this->SendDebug("Read Ack Data:",$this->GetBuffer($gateway->sid),0);
                     //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
                        
                     break;

@@ -61,7 +61,7 @@
             
             $xidata = json_decode($data->Buffer);
             //print_r ($xidata);
-            $this->SendDebug("test Data:",$test,0);
+            $this->SendDebug("test Data:","test",0);
 
             // Hier würde man den Buffer im Normalfall verarbeiten
             // z.B. CRC prüfen, in Einzelteile zerlegen

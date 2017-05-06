@@ -100,13 +100,19 @@
                     break;
                 case "get_id_list_ack":
                     //We would package our payload here before sending it further...
+                    $this->SetBuffer("modes", "");
                     $this->GetList(json_decode($gateway->data), "gateway", $gateway->sid);
                     
                     break;
-                case "read_ack":    
-                    
-                    $this->SetBuffer($gateway->sid,$gateway->model);
+                case "read_ack":
+                    $buf = $this->GetBuffer("modes");
+                    $buf .= json_encode($gateway);
+                    $this->SetBuffer("modes", $buf);
+                    //$this->SetBuffer($gateway->sid,$gateway->model);
                        
+                    break;
+                case "read_mode_ack":
+                    $this->pushtochild($ids, $model, $sid);
                     break;
 
                 default:
@@ -146,13 +152,11 @@
         public function GetList ($ids, $model, $sid){
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
-                $resultJSON = @$this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
-                $result = @json_decode($resultJSON, true);
-
+                $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
             }
-            $this->pushtochild($ids, $model, $sid);
-            $sidmode['cmd'] = 'test';
-            @$this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($sidmode))));
+            $payload['cmd'] = 'read_mode';
+            $payload['sid'] = $sid;
+            $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
             return $result;
         }
         

@@ -151,6 +151,7 @@
                 while (empty($this->GetBuffer($value)) AND $x <10) {
                     IPS_Sleep(1000);
                     $this->SendDebug("test",$this->GetBuffer($value),0);
+                    $this->SendDebug("test",$value,0);
                     $x++;
                 }
             }

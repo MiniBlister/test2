@@ -108,7 +108,7 @@
                 case "read_ack":    
                     
                     $this->SetBuffer($gateway->sid,$gateway->model);
-                    $sidmode[] = $gateway->model;
+                    $this->sidmode[] = $gateway->model;
                     $this->SendDebug("test Data:",$gateway->model,0);
                     //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
                        
@@ -154,7 +154,7 @@
                 $result = @$this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload))));
                 IPS_LogMessage("Xiaomi Door RECV", utf8_decode($result));
             }
-            $this->pushtochild($sidmode);
+            $this->pushtochild($this->sidmode);
             return $result;
         }
         

@@ -148,19 +148,11 @@
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $resultJSON = @$this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
                 $result = @json_decode($resultJSON, true);
-                if ($result === false)
-                {
-                    trigger_error('Error on Read Paramset', E_USER_NOTICE);
-                    $this->SendDebug('Error', '', 0);
-                }
-                else {
-                    $this->SendDebug('test', $result, 0);
-                
-                }
+
             }
             $this->pushtochild($ids, $model, $sid);
             $sidmode['cmd'] = 'test';
-            $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $sidmode)));
+            @$this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($sidmode))));
             return $result;
         }
         

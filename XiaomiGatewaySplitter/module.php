@@ -110,7 +110,7 @@
                     
                     $this->SetBuffer($gateway->sid,$gateway->model);
                     $this->sidmode[] = $gateway->model;
-                    $this->SendDebug("Read Ack Data:",$this->GetBuffer($gateway->sid),0);
+                    $this->SendDebug("Read Ack Data:",json_encode($this->sidmode),0);
                     //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
                        
                     break;
@@ -150,11 +150,9 @@
         
                 //Get ID list and details for Sensors
         public function GetList ($ids){
-           
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
-                
                 //IPS_LogMessage("Xiaomi Door RECV", utf8_decode($result));
             }
             $this->pushtochild($this->sidmode);

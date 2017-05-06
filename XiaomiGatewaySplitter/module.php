@@ -148,7 +148,8 @@
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
                 while ($this->GetBuffer($value) == "") {
-                    IPS_Sleep(10);
+                    IPS_Sleep(100);
+                    $this->SendDebug("test","test",0);
                 }
             }
             $this->pushtochild($ids, $model, $sid);

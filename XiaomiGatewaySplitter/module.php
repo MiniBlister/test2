@@ -102,13 +102,14 @@
                     break;
                 case "get_id_list_ack":
                     //We would package our payload here before sending it further...
-                    $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));    
+                    $this->GetList(json_decode($xidata->data));
+                    //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));    
                     break;
                 case "read_ack":    
                     
                     $this->SetBuffer($gateway->sid,$gateway->model);
-
-                    $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
+                    $sidmode[] = $gateway->model;
+                    //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
                        
                     break;
 
@@ -143,8 +144,24 @@
                     IPS_ApplyChanges($pid);
                 }
             }    
-        } 
+        }
         
+                //Get ID list and details for Sensors
+        public function GetList ($ids){
+            foreach ($ids as $key=>$value) {
+                $payload = array ("cmd" => "read", "sid" => $value);
+                $result = @$this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload))));
+                IPS_LogMessage("Xiaomi Door RECV", utf8_decode($result));
+            }
+            $this->pushtochild($sidmode);
+            return $result;
+        }
+        
+        public function pushtochild($sid) {
+            
+           $this->SendDebug("test Data:",$sid,0); 
+           //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer))); 
+        }
 
 
     }

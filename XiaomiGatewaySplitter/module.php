@@ -147,10 +147,12 @@
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $return = @$this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
-                //while ($this->GetBuffer($value) == "") {
-                    IPS_Sleep(100);
-                  //  $this->SendDebug("test","test",0);
-                //}
+                $x = 0;
+                while (empty($this->GetBuffer($value)) AND $x <10) {
+                    IPS_Sleep(1000);
+                    $this->SendDebug("test",$this->GetBuffer($value),0);
+                    $x++;
+                }
             }
             $this->pushtochild($ids, $model, $sid);
             return $result;

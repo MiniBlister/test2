@@ -156,6 +156,7 @@
             }
             $payload['cmd'] = 'read_mode';
             $payload['sid'] = $sid;
+            $payload['token'] = "hallo";
             $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
             return $result;
         }

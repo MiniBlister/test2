@@ -153,6 +153,10 @@
                     trigger_error('Error on Read Paramset', E_USER_NOTICE);
                     $this->SendDebug('Error', '', 0);
                 }
+                else {
+                    $this->SendDebug('test', $result, 0);
+                
+                }
             }
             $this->pushtochild($ids, $model, $sid);
             return $result;

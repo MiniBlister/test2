@@ -67,7 +67,7 @@
             // z.B. CRC prüfen, in Einzelteile zerlegen
             try
             {
-                         
+                $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $data->Buffer)));
                 
             }
             catch (Exception $ex)
@@ -78,9 +78,8 @@
 
               
             //We would package our payload here before sending it further...
-            IPS_LogMessage("Forward Date to I/O:",json_encode($data->Buffer));
-            $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $data->Buffer)));
-			
+            //IPS_LogMessage("Forward Date to I/O:",json_encode($data->Buffer));
+            			
             //Normally we would wait here for ReceiveData getting called asynchronically and buffer some data
             //Then we should extract the relevant feedback/data and return it to the caller
             return $result;
@@ -101,7 +100,6 @@
                     break;
                 case "get_id_list_ack":
                     //We would package our payload here before sending it further...
-                   
                     $this->GetList(json_decode($gateway->data), "gateway", $gateway->sid);
                     
                     break;
@@ -148,8 +146,13 @@
         public function GetList ($ids, $model, $sid){
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
-                $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
-                //IPS_LogMessage("Xiaomi Door RECV", utf8_decode($result));
+                $resultJSON = @$this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
+                $result = @json_decode($resultJSON, true);
+                if ($Result === false)
+                {
+                    trigger_error('Error on Read Paramset', E_USER_NOTICE);
+                    $this->SendDebug('Error', '', 0);
+                }
             }
             $this->pushtochild($ids, $model, $sid);
             return $result;

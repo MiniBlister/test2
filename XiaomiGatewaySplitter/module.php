@@ -154,7 +154,7 @@
             foreach ($ids as $key=>$value) {
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $result = $this->SendDataToParent(json_encode(Array("DataID" => "{E496ED12-5963-4494-87F3-E537175E7418}", "Buffer" => json_encode($payload))));
-                $this->SendDebug("Push Data:",json_encode($this->sidmode),0);
+                $this->SendDebug("Push Data:",json_encode($payload),0);
                 //IPS_LogMessage("Xiaomi Door RECV", utf8_decode($result));
             }
             $this->pushtochild($this->sidmode);

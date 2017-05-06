@@ -104,7 +104,6 @@
                    
                     $this->GetList(json_decode($gateway->data), "gateway", $gateway->sid);
                     
-                    //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));    
                     break;
                 case "read_ack":    
                     

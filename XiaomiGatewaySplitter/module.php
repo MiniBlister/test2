@@ -100,7 +100,7 @@
                     break;
                 case "get_id_list_ack":
                     //We would package our payload here before sending it further...
-                    $this->SetBuffer("modes", "");
+                    
                     $this->GetList(json_decode($gateway->data), "gateway", $gateway->sid);
                     
                     break;

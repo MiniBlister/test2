@@ -148,7 +148,7 @@
                 $payload = array ("cmd" => "read", "sid" => $value);
                 $resultJSON = @$this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => json_encode($payload))));
                 $result = @json_decode($resultJSON, true);
-                if ($Result === false)
+                if ($result === false)
                 {
                     trigger_error('Error on Read Paramset', E_USER_NOTICE);
                     $this->SendDebug('Error', '', 0);

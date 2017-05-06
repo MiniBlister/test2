@@ -108,6 +108,7 @@
                 case "read_ack":    
                     
                     $this->SetBuffer($gateway->sid,$gateway->model);
+                    
                        
                     break;
 

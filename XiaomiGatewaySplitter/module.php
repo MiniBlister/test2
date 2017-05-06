@@ -109,6 +109,7 @@
                     
                     $this->SetBuffer($gateway->sid,$gateway->model);
                     $sidmode[] = $gateway->model;
+                    $this->SendDebug("test Data:",$gateway->model,0);
                     //$this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));
                        
                     break;

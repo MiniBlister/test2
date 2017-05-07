@@ -67,7 +67,7 @@
             // z.B. CRC prüfen, in Einzelteile zerlegen
             try
             {
-                switch()
+                
                 
                 $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $data->Buffer)));
                 

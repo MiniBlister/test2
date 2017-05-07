@@ -61,14 +61,16 @@
             
             $xidata = json_decode($data->Buffer);
             //print_r ($xidata);
-            $this->SendDebug("test Data:","test",0);
+            $this->SendDebug("test Data:", json_encode($xidata)$xidata,0);
 
             // Hier würde man den Buffer im Normalfall verarbeiten
             // z.B. CRC prüfen, in Einzelteile zerlegen
             try
             {
+                switch()
+                
                 $result = $this->SendDataToParent(json_encode(Array("DataID" => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}", "Buffer" => $data->Buffer)));
-                $this->SendDebug("Result Data:",$result,0);
+                
             }
             catch (Exception $ex)
             {

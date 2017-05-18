@@ -1,14 +1,38 @@
 {
     "elements":
-    [
-        
-    ],
-    "actions":
-    [
-               
-    ],
+            [
+                {
+                    "name": "Open",
+                    "type": "CheckBox",
+                    "caption": "Open"
+                },
+                {
+                    "name": "Host",
+                    "type": "ValidationTextBox",
+                    "caption": "Host"
+                }
+            ],
     "status":
-    [
-    
-    ]
+            [
+                {
+                    "code": 102,
+                    "icon": "active",
+                    "caption": "Config valid"
+                },
+                {
+                    "code": 104,
+                    "icon": "inactive",
+                    "caption": "Interface closed"
+                },
+                {
+                    "code": 202,
+                    "icon": "error",
+                    "caption": "Host is empty."
+                },
+                {
+                    "code": 203,
+                    "icon": "error",
+                    "caption": "Gateway timed out."
+                }
+            ]
 }

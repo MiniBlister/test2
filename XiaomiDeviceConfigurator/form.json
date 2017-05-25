@@ -2,7 +2,7 @@
     "actions": [{
             "type": "Button",
             "label": "Search",
-            "onClick": "KoXiDeConf_SearchDevices($id);"
+            "onClick": "KoXiDeConf_ListDevices($id);"
         },
         {
             "type": "Label",

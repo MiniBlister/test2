@@ -251,7 +251,6 @@ class XiaomiGatewaySplitter extends ipsmodule
         else
             $result = $this->Send($ForwardData->cmd, $ForwardData->sid);
 
-
         // Antwort (Array) serialisiert zurück an den Child mit return
         return serialize($result);
     }
@@ -303,7 +302,9 @@ class XiaomiGatewaySplitter extends ipsmodule
         {
             // oh, Fehler.
             // Den Index wieder entfernene.
-            unset($this->SendQueue[$sid][$cmd]);
+            $SendQueue = $this->SendQueue;
+            unset($SendQueue[$sid][$cmd]);
+            $this->SendQueue = $SendQueue;
             return false;
         }
         // Warten auf Änderung des Buffers durch ReceiveData
@@ -326,10 +327,15 @@ class XiaomiGatewaySplitter extends ipsmodule
         return $Result;
     }
 
-    private function UpdateQueue($cmd, $sid, $data)
+    private function UpdateQueue($cmd, $sid, $data, $model)
     {
         if (isset($this->SendQueue[$sid][$cmd]))
-            $this->SendQueue[$sid][$cmd] = json_decode($data);
+        {
+            $SendQueue = $this->SendQueue;
+            $SendQueue[$sid][$cmd] = json_decode($data,true);
+            $SendQueue[$sid][$cmd]['model'] = $model;
+            $this->SendQueue = $SendQueue;
+        }
     }
 
     public function ReceiveData($JSONString)
@@ -360,13 +366,13 @@ class XiaomiGatewaySplitter extends ipsmodule
 
                 break;
             case "write_ack": // Antwort -> Abgleich mit der SendQueue
-                $this->UpdateQueue("write", $gateway->sid, $gateway->data);
+                $this->UpdateQueue("write", $gateway->sid, $gateway->data,$gateway->model);
                 break;
             case "read_ack": // Antwort -> Abgleich mit der SendQueue
-                $this->UpdateQueue("read", $gateway->sid, $gateway->data);
+                $this->UpdateQueue("read", $gateway->sid, $gateway->data,$gateway->model);
                 break;
             case "get_id_list_ack": // Antwort -> Abgleich mit der SendQueue
-                $this->UpdateQueue("get_id_list", $gateway->sid, $gateway->data);
+                $this->UpdateQueue("get_id_list", $gateway->sid, $gateway->data,$gateway->model);
                 break;
             case 'report': // Event für Childs, weitersenden
                 $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));

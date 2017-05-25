@@ -88,7 +88,7 @@ class XiaomiDevice extends ipsmodule
 
         //Nur Daten empfangen in ReceiveData für mein Gerät
         $sid = $this->ReadPropertyString("DeviceID");
-        $this->SetReceiveDataFilter('.*"sid":"' . $sid . '".*');
+        $this->SetReceiveDataFilter('.*\"sid\":\"' . $sid . '\".*');
 
         // IPS fertig gestartet ?
         if (IPS_GetKernelRunlevel() <> KR_READY)
@@ -211,11 +211,11 @@ class XiaomiDevice extends ipsmodule
 
     public function ReceiveData($JSONString)
     { // Hier kommen nur noch 'report' und 'heartbeat' rein.
-        $alldata = json_decode($JSONString);
+        $alldata = json_decode($JSONString)->Buffer;
 
-        if ($this->model <> $alldata->model)
+        if ($this->model <> trim($alldata->model))
         {
-            $this->model = $alldata->model;
+            $this->model = trim($alldata->model);
             $this->SetSummary($this->model);
         }
 

@@ -155,6 +155,7 @@ class XiaomiGatewaySplitter extends ipsmodule
     protected function KernelReady()
     {
         $this->ApplyChanges(); // Einfach noch mal und dann kommen wir auch über die RunLevel Abfrage hinaus.
+        $this->RefreshAllDevices();
     }
 
     /**
@@ -177,6 +178,7 @@ class XiaomiGatewaySplitter extends ipsmodule
         {
             $this->SetStatus(IS_ACTIVE); // Na wir dann auch
             $this->SetTimerInterval('KeepAlive', 60000); // KeepAlive starten
+            $this->RefreshAllDevices();
         }
         elseif ($State == IS_INACTIVE) // Oh, Parent ist inaktiv geworden
         {
@@ -221,6 +223,20 @@ class XiaomiGatewaySplitter extends ipsmodule
     {
         $this->SetStatus(IS_EBASE + 3);
         $this->SetTimerInterval('KeepAlive', 0); // Und kein Keep-Alive mehr.
+    }
+
+    /** Einmal allen verbundenen Devices die Konfig übernehmen, damit sie ihre Stati holen können.
+     * 
+     */
+    protected function RefreshAllDevices()
+    {
+        $InstanceIDList = IPS_GetInstanceListByModuleID("{B237D1DF-B9B0-4A8D-8EC5-B4F7A88E54FC}");
+        foreach ($InstanceIDList as $InstanceID)
+        {
+            // Nur eigene Geräte
+            if (IPS_GetInstance($InstanceID)['ConnectionID'] == $this->ParentID)
+                IPS_ApplyChanges($InstanceID);
+        }
     }
 
     /** Aktuell nur zum testen, später wird diese Funktion private und über ForwardData vom Konfigurator ausgeführt.
@@ -332,7 +348,7 @@ class XiaomiGatewaySplitter extends ipsmodule
         if (isset($this->SendQueue[$sid][$cmd]))
         {
             $SendQueue = $this->SendQueue;
-            $SendQueue[$sid][$cmd] = json_decode($data,true);
+            $SendQueue[$sid][$cmd] = json_decode($data, true);
             $SendQueue[$sid][$cmd]['model'] = $model;
             $this->SendQueue = $SendQueue;
         }
@@ -366,13 +382,13 @@ class XiaomiGatewaySplitter extends ipsmodule
 
                 break;
             case "write_ack": // Antwort -> Abgleich mit der SendQueue
-                $this->UpdateQueue("write", $gateway->sid, $gateway->data,$gateway->model);
+                $this->UpdateQueue("write", $gateway->sid, $gateway->data, $gateway->model);
                 break;
             case "read_ack": // Antwort -> Abgleich mit der SendQueue
-                $this->UpdateQueue("read", $gateway->sid, $gateway->data,$gateway->model);
+                $this->UpdateQueue("read", $gateway->sid, $gateway->data, $gateway->model);
                 break;
             case "get_id_list_ack": // Antwort -> Abgleich mit der SendQueue
-                $this->UpdateQueue("get_id_list", $gateway->sid, $gateway->data,$gateway->model);
+                $this->UpdateQueue("get_id_list", $gateway->sid, $gateway->data, $gateway->model);
                 break;
             case 'report': // Event für Childs, weitersenden
                 $this->SendDataToChildren(json_encode(Array("DataID" => "{B75DE28A-A29F-4B11-BF9D-5CC758281F38}", "Buffer" => $data->Buffer)));

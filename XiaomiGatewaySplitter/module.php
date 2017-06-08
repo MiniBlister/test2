@@ -9,6 +9,7 @@ include_once(__DIR__ . "/../XiaomTraits.php");
  * 
  * @property integer $ParentID 
  * @property string $sid
+ * @property string $GatewayIP
  * @property array $SendQueue
  * @property string $Buffer
  */
@@ -22,6 +23,7 @@ class XiaomiGatewaySplitter extends ipsmodule
         InstanceStatus // Diverse Methoden für die Verwendung im Splitter
     {
         InstanceStatus::MessageSink as IOMessageSink; // MessageSink gibt es sowohl hier in der Klasse, als auch im Trait InstanceStatus. Hier wird für die Methode im Trait ein Alias benannt.
+        InstanceStatus::RegisterParent as IORegisterParent; // MessageSink gibt es sowohl hier in der Klasse, als auch im Trait InstanceStatus. Hier wird für die Methode im Trait ein Alias benannt.
     }
 
     // public $sidmode; // Das geht nicht, da alle Daten flüchtig sind!
@@ -64,7 +66,8 @@ class XiaomiGatewaySplitter extends ipsmodule
 
         // SendQueue leeren
         $this->SendQueue = array();
-
+        $this->GatewayIP="";
+        
         // Unseren Parent merken und auf dessen Statusänderungen registrieren.
         $this->RegisterParent();
         if ($this->HasActiveParent())
@@ -99,6 +102,17 @@ class XiaomiGatewaySplitter extends ipsmodule
             $this->IOChangeState(IS_ACTIVE);
     }
 
+    /**
+     * Überschreibt RegisterParent aus dem Trait InstanceStatus
+     */
+    protected function RegisterParent()
+    {
+        $this->IORegisterParent();
+        if ($this->ParentID > 0)
+            $this->GatewayIP = IPS_GetProperty ($this->ParentID, 'Host');
+        else
+            $this->GatewayIP="";
+    }
     /**
      * Wird über den Trait InstanceStatus ausgeführt wenn sich der Status des Parent ändert.
      * Oder wenn sich die Zuordnung zum Parent ändert.
@@ -281,7 +295,7 @@ class XiaomiGatewaySplitter extends ipsmodule
         {
             case "heartbeat": //Event ? Dann hier verarbeiten
                 // heartbeat vom Gateway mit unerer IP ?
-                if (($gateway->model == "gateway") && (json_decode($gateway->data)->ip == $this->ReadPropertyString('Host')))
+                if (($gateway->model == "gateway") && (json_decode($gateway->data)->ip == $this->GatewayIP))
                 {
                     // KeepAlive Timer neustarten
                     $this->SetTimerInterval('KeepAlive', 0);

@@ -329,6 +329,7 @@ class XiaomiDevice extends ipsmodule
             $this->model = trim($Result['model']);
             $this->SetSummary(trim($Result['model']));
         }
+        unset($Result['model']);
         return $Result;
     }
 

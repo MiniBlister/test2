@@ -154,6 +154,7 @@ class XiaomiDeviceConfigurator extends ipsmodule
             return false;
         }
         $this->SendDebug('Receive', $Result, 0);
+        unset($Result['model']);
         return $Result;
     }
 

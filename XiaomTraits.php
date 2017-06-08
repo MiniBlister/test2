@@ -4,8 +4,8 @@ if (@constant('IPS_BASE') == null) //Nur wenn Konstanten noch nicht bekannt sind
 {
 // --- BASE MESSAGE
     define('IPS_BASE', 10000);                             //Base Message
-    define('IPS_KERNELSHUTDOWN', IPS_BASE + 1);            //Pre Shutdown Message, Runlevel UNINIT Follows
-    define('IPS_KERNELSTARTED', IPS_BASE + 2);             //Post Ready Message
+    define('IPS_KERNELSTARTED', IPS_BASE + 1);             //Post Ready Message
+    define('IPS_KERNELSHUTDOWN', IPS_BASE + 2);            //Pre Shutdown Message, Runlevel UNINIT Follows
 // --- KERNEL
     define('IPS_KERNELMESSAGE', IPS_BASE + 100);           //Kernel Message
     define('KR_CREATE', IPS_KERNELMESSAGE + 1);            //Kernel is beeing created
@@ -294,7 +294,10 @@ trait InstanceStatus
         {
             case DM_CONNECT:
                 $this->RegisterParent();
-                $this->ForceIORefresh();
+                if ($this->HasActiveParent())
+                    $this->IOChangeState(IS_ACTIVE);
+                else
+                    $this->IOChangeState(IS_INACTIVE);
                 break;
             case DM_DISCONNECT:
                 $this->RegisterParent();

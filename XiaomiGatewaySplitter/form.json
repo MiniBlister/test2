@@ -2,15 +2,10 @@
     "elements":
             [
                 {
-                    "name": "Open",
-                    "type": "CheckBox",
-                    "caption": "Open"
-                },
-                {
-                    "name": "Host",
-                    "type": "ValidationTextBox",
-                    "caption": "Host"
+                    "type": "Label",
+                    "label": "Sie müssen die IP-Adresse im IO konfigurieren."
                 }
+
             ],
     "status":
             [

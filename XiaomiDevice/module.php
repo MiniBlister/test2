@@ -88,8 +88,7 @@ class XiaomiDevice extends ipsmodule
 
         //Nur Daten empfangen in ReceiveData für mein Gerät
         $sid = $this->ReadPropertyString("DeviceID");
-        $this->SetReceiveDataFilter('.*\"sid\":\"' . $sid . '\".*');
-
+        $this->SetReceiveDataFilter('(.*\\\"sid\\\":\\\"' . $sid . '\\\".*|.*"STARTUP":"RUN".*)');
         // IPS fertig gestartet ?
         if (IPS_GetKernelRunlevel() <> KR_READY)
             return;
@@ -210,8 +209,15 @@ class XiaomiDevice extends ipsmodule
     }
 
     public function ReceiveData($JSONString)
-    { // Hier kommen nur noch 'report' und 'heartbeat' rein.
-        $alldata = json_decode($JSONString)->Buffer;
+    {
+        $alldata = json_decode($JSONString);
+        if (property_exists($alldata, 'STARTUP'))
+        {
+            $this->ApplyChanges();
+            return;
+        }
+// Hier kommen nur noch 'report' und 'heartbeat' rein.
+        $alldata = json_decode($alldata->Buffer);
 
         if ($this->model <> trim($alldata->model))
         {
@@ -303,7 +309,7 @@ class XiaomiDevice extends ipsmodule
         if ($this->model !== "")
             $SendData["model"] = $this->model;
 
-        $ResultString = $this->SendDataToParent(json_encode($SendData));
+        $ResultString = @$this->SendDataToParent(json_encode($SendData));
         if ($ResultString === false)
         {
             $this->SendDebug('Receive', 'Error on send command', 0);
